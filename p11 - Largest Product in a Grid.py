@@ -40,17 +40,69 @@ import time
 
 
 def main():
-    max_horizontal = 0
-    max_vertical = 0
-    max_diagonal = 0
+    max_product= 0
+    
+    #read in text
+    file = open('p11 - data.txt', 'r')
+    text_grid = file.read()
+    file.close()
     
     #convert text to 2D array
+    array = text_grid.split('\n')
+    array = [i.split() for i in array]
     
+    #convert strings in array to ints
+    for row in array:
+        for i in range(0, len(row)):
+            row[i] = int(row[i])
+    printArray(array)
+        
     #find max horizontal
+    max_product = findMaxHorizontal(array, max_product)
     
-    #find max vertical (swap x/y cords from max horizontal?)
+    #find max diagonaly (bottom half)
+    #max_product = findMaxDiagonal(array, max_product)
+
+      
+    #transpose array (swap rows and colloms)
+    array = list(map(list, zip(*array)))
     
-    #find max dianglaly
+    #find max vertical
+    max_product = findMaxHorizontal(array, max_product)
+
+        
+    #find max dianglaly (origional top half)
+    #max_product = findMaxDiagonal(array, max_product)
+    
+    #print data
+    print(max_product)
+
+
+
+def findMaxHorizontal(array, max_product):
+    for row in array:
+        for i in range(3,len(row)):
+            product = row[i] * row[i - 1] * row[i - 2] * row[i - 3]
+            if product > max_product:
+                max_product = product
+    return(max_product)
+                
+
+def findMaxDiagonal(array, max_product):
+    for start_pos in range(3, len(array)):
+        for delta in range(0, len(array) - 3):
+            hold = start_pos + delta
+            product = 1
+            for i in range(0,3):
+                product = product * array[delta - i][hold - i]
+            if product > max_product:
+                max_product = product
+    return(max_product)
+        
+              
+def printArray(array):
+    for row in array:
+        print(row)
     
 start_time = time.clock()
 main()
