@@ -16,70 +16,33 @@ How many such routes are there through a 20×20 grid?
 """
 
 """
-Note, each route for a NxN grid has N Right arrows, and N Down Arrows
-thus the permuataion of [R1, R2, ..., Rn, D1, D2, ... Dn]
-gives all possible routes
+Note: this can be solved using Binomial Coefficients (nCk), aka n choose k. 
 
-i.e N!
+For the 2x2 example we have: 
+     _ _ _ _  spots and R, R, D, D to choose from
+     
+however, once all the R's or all the D's are in place, the other must fill in
+the blanks, thus we have 4C2
+
+nCk =  ___(n!)___
+       k!(n - k!)
 """
 
 """
-Answer: Incompleat
+Answer: 137846528820
 """
-import time, random
+from scipy.special import comb
+import time
 
-def main(start_time):
+def main():
     size = 20
-    down_moves = gen_moves('D', size)
-    right_moves = gen_moves('R', size)
-    paths = []
-    now = time.clock()
-    while now < start_time + 20000:
-    #for k in range(1000000):
-        path = []
-        for i in range(size * 2):
-            #if the bottom row has been reached, adds the remaining right moves
-            if set(down_moves).issubset(path):
-                for move in right_moves:
-                    if move not in path:
-                        path = path + [move]
-                        #print("all r moves", path)
-            #if the rightmost collom has been reached, adds the remaining down moves
-            elif set(right_moves).issubset(path):
-                for move in down_moves:
-                    if move not in path:
-                        path = path + [move]
-                        #print("all d moves", path)
-            else:
-                right_or_down = bool(random.getrandbits(1))
-                if right_or_down:
-                    for move in right_moves:
-                        if move not in path:
-                            path = path + [move]
-                            #print('add r move ', path)
-                            break
-                else:
-                    for move in down_moves:
-                        if move not in path:
-                            path = path + [move]
-                            #print('add d move', path)
-                            break
-                        
-        #print ("Final path: ", path, '\n\n')
-        now = time.clock()
-        
-        if path not in paths:
-            paths = paths + [path]
-        
-    print (len(paths))
-
-def gen_moves(direction, size):
-    moves = [direction + str(n) for n in range(size)]
-    return moves
- 
+    n = size * 2
+    k = size
+    print(comb(n, k, exact = True))
+    
     
 
 print("Running, do not shut off Computer...")
 start_time = time.clock()
-main(start_time)
+main()
 print("Time: ", time.clock() - start_time)

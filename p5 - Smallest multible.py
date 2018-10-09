@@ -7,13 +7,14 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 answer = 232792560
 """
+import time
 
 def main():
     numbers = [12,13,14,15,16,17,18,19,20]
     winner = 11
     for element in numbers:
         winner = lcm(winner, element)
-        print(winner)
+    print(winner)
     
      
 
@@ -25,5 +26,6 @@ def gcd(a,b):
     while b:      
         a, b = b, a % b
     return a
-
+start_time = time.clock()
 main()
+print(time.clock() - start_time)

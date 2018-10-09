@@ -1,18 +1,18 @@
-#Project Euler, Problem 3, Largest Prime Factor
-#success
+"""
+Largest prime factor
+Problem 3 
+The prime factors of 13195 are 5, 7, 13 and 29.
 
-def prime_factor():
-    number = int(input('What number do you want to Prime Facotr? '))
-    n = 2
-    factors = (1,)
-    while n <= number:
-        if number%n==0:
-            factors = factors + (n,)
-            print(n, factors, len(factors))
-            number = number/n
-        else:
-            n=n+1
-    prime_factor()
+What is the largest prime factor of the number 600851475143 ?
+"""
+import time
+from PrimeTools import find_factors
 
+def main():
+    number = 600851475143
+    print(find_factors(number))
+    
 
-prime_factor()
+start_time = time.clock()
+main()
+print(time.clock() - start_time)

@@ -51,3 +51,19 @@ def sieve_of_eratosthenes(upperbound):
            sieve[j] = False
            j = j + i
    return sieve
+
+
+"""
+Creates a list of prime factors for a number
+@param number - number to be factored
+"""
+def find_factors(number):
+    n = 2
+    factors = []
+    while n <= number:
+        if number%n==0:
+            factors = factors + [n,]
+            number = number/n
+        else:
+            n=n+1
+    return(factors)
