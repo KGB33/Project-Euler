@@ -38,7 +38,7 @@ What is the greatest product of four adjacent numbers in the same direction
 """
 from PrimeTools import timer
 import time
-import numpy as np
+import numpy as np # doesn't look like numpy is working w/ python 3.7
 
 
 def main():
