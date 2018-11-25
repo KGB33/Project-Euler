@@ -36,74 +36,128 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction 
 (up, down, left, right, or diagonally) in the 20×20 grid?
 """
+from PrimeTools import timer
 import time
+import numpy as np
 
 
 def main():
-    max_product= 0
+    maxes = {}
     
-    #read in text
-    file = open('p11 - data.txt', 'r')
-    text_grid = file.read()
-    file.close()
+    # read in text
+    with open("p11 - data.txt") as file:
+        text_grid = file.read()
     
-    #convert text to 2D array
+    # convert text to 2D array
     array = text_grid.split('\n')
     array = [i.split() for i in array]
     
-    #convert strings in array to ints
+    # convert strings in array to ints
     for row in array:
         for i in range(0, len(row)):
             row[i] = int(row[i])
-    printArray(array)
-        
-    #find max horizontal
-    max_product = findMaxHorizontal(array, max_product)
-    
-    #find max diagonaly (bottom half)
-    #max_product = findMaxDiagonal(array, max_product)
+    # print_array(array)
 
-      
-    #transpose array (swap rows and colloms)
-    array = list(map(list, zip(*array)))
-    
-    #find max vertical
-    max_product = findMaxHorizontal(array, max_product)
+    # find max products
+    maxes.update({"Max Diagonal": find_max_diagonal(array)})
+    maxes.update({"Max Vertical": find_max_vertical(array)})
+    maxes.update({"Max Horizontal": find_max_horizontal(array)})
+    array = np.transpose(array) # transpose to get other half of array
+    maxes.update({"Max T-Diagonal": find_max_diagonal(array)})
 
-        
-    #find max dianglaly (origional top half)
-    #max_product = findMaxDiagonal(array, max_product)
-    
-    #print data
-    print(max_product)
+    # find the max of the maxes
+    mega_max = find_max_in_dic(maxes)
+
+    # print data
+    print("\n\n\nMegaMax: {0}".format(mega_max))
+    print_dic(maxes)
 
 
-
-def findMaxHorizontal(array, max_product):
+def find_max_horizontal(array):
+    maximum = 0
     for row in array:
-        for i in range(3,len(row)):
-            product = row[i] * row[i - 1] * row[i - 2] * row[i - 3]
-            if product > max_product:
-                max_product = product
-    return(max_product)
+        for i in range(0, len(row)):
+            product = 1
+            try:
+                # print(row)
+                for s in range(0, 4):
+                    # print(row[i + s])
+                    product *= row[i + s]
+            except IndexError:
+                # print("index error in max horizontal")
+                pass
+            if product > maximum:
+                maximum = product
+    return maximum
+
+
+def find_max_vertical(array):
+    maximum = 0
+    for r in range(0, len(array)):
+        for c in range(0, len(array)):
+            product = 1
+            # print("R: {0}, C: {1}".format(r, c))
+            try:
+                for s in range(0, 4):
+                    # print("\t{0}".format(array[r + s][c]))
+                    product *= array[r + s][c]
+            except IndexError:
+                # print("Vert. Array Error")
+                pass
+            if product > maximum:
+                maximum = product
+    return maximum
                 
 
-def findMaxDiagonal(array, max_product):
-    for start_pos in range(3, len(array)):
-        for delta in range(0, len(array) - 3):
-            hold = start_pos + delta
+def find_max_diagonal(array):
+    maximum = 0
+    num_index_errors = 0
+    for r in range(0, len(array)):
+        for c in range(0, len(array)):
             product = 1
-            for i in range(0,3):
-                product = product * array[delta - i][hold - i]
-            if product > max_product:
-                max_product = product
-    return(max_product)
-        
-              
-def printArray(array):
+            try:
+                # print("R: {0}, C: {1}".format(r, c))
+                for s in range(0, 4):
+                    # print("\t", array[r + s][c + s])
+                    product *= array[r + s][c + s]
+            except IndexError:
+                num_index_errors += 1
+                """
+                print("Index error at:"
+                      "\n\tRow: {0}"
+                      "\n\tColum: {1}"
+                      "\n\tShift: {2}"
+                      "\n\tTotal IndexErrors: {3}".format(r, c, s, num_index_errors))
+                """
+                pass
+            maximum = find_max(maximum, product)
+    return maximum
+
+
+def find_max_in_dic(dic):
+    maximum = 0
+    for key in dic:
+        maximum = find_max(maximum, dic[key])
+    return maximum
+
+
+def find_max(current_max, challanger):
+    if challanger > current_max:
+        return challanger
+    else:
+        return current_max
+
+
+def print_array(array):
     for row in array:
         print(row)
-    
+
+
+def print_dic(dic):
+    for key in dic:
+        print("\t{0}: {1}".format(key, dic[key]))
+
+
 start_time = time.clock()
 main()
 print('Time: ', time.clock() - start_time)
