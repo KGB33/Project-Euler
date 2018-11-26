@@ -21,7 +21,7 @@ def little_fermat(number, trials):
     # Fermats Little Therom
     for i in range(1,trials):
         base = random.randint(2, number - 1)
-        if pow(base, number - 1)%number != 1:
+        if pow(base, number - 1) % number != 1:
             return False
 
     return True # probably
@@ -94,6 +94,6 @@ def timer(func):
         before = perf_counter_ns()
         rv = func(*args, **kwargs)
         after = perf_counter_ns()
-        print("Time Elapsed: {0}".format(after-before))
+        print("\n\nTime Elapsed: {:.3f}ms".format((after-before) / 1000000))
         return rv
     return wrapper_timer

@@ -1,3 +1,4 @@
+from PrimeTools import timer
 import time
 """
 Created on Mon Sep 17 13:39:47 2018
@@ -38,6 +39,7 @@ What is the greatest product of four adjacent numbers in the same direction
 """
 
 
+@timer
 def main():
     maxes = {}
     
@@ -179,6 +181,5 @@ def print_dic(dic):
         print("\t{0}: {1}".format(key, dic[key]))
 
 
-start_time = time.clock()
 main()
-print('Time: ', time.clock() - start_time)
+
