@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+import time
 """
 Created on Mon Sep 17 13:39:47 2018
 
-@author: kelto
+@author: Kelton
 """
 
 """
@@ -36,9 +36,6 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction 
 (up, down, left, right, or diagonally) in the 20×20 grid?
 """
-from PrimeTools import timer
-import time
-import numpy as np # doesn't look like numpy is working w/ python 3.7
 
 
 def main():
@@ -59,11 +56,10 @@ def main():
     # print_array(array)
 
     # find max products
-    maxes.update({"Max Diagonal": find_max_diagonal(array)})
+    maxes.update({"Max L->R Diagonal": find_max_lr_diagonal(array)})
+    maxes.update({"Max R->L Diagonal": find_max_rl_diagonal(array)})
     maxes.update({"Max Vertical": find_max_vertical(array)})
     maxes.update({"Max Horizontal": find_max_horizontal(array)})
-    array = np.transpose(array) # transpose to get other half of array
-    maxes.update({"Max T-Diagonal": find_max_diagonal(array)})
 
     # find the max of the maxes
     mega_max = find_max_in_dic(maxes)
@@ -109,7 +105,7 @@ def find_max_vertical(array):
     return maximum
                 
 
-def find_max_diagonal(array):
+def find_max_lr_diagonal(array):
     maximum = 0
     num_index_errors = 0
     for r in range(0, len(array)):
@@ -120,6 +116,31 @@ def find_max_diagonal(array):
                 for s in range(0, 4):
                     # print("\t", array[r + s][c + s])
                     product *= array[r + s][c + s]
+            except IndexError:
+                num_index_errors += 1
+                """
+                print("Index error at:"
+                      "\n\tRow: {0}"
+                      "\n\tColum: {1}"
+                      "\n\tShift: {2}"
+                      "\n\tTotal IndexErrors: {3}".format(r, c, s, num_index_errors))
+                """
+                pass
+            maximum = find_max(maximum, product)
+    return maximum
+
+
+def find_max_rl_diagonal(array):
+    maximum = 0
+    num_index_errors = 0
+    for r in range(0, len(array)):
+        for c in range(0, len(array)):
+            product = 1
+            try:
+                # print("R: {0}, C: {1}".format(r, c))
+                for s in range(0, 4):
+                    # print("\t", array[r + s][c + s])
+                    product *= array[r + s][c - s]
             except IndexError:
                 num_index_errors += 1
                 """
