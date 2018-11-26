@@ -6,16 +6,20 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5,
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
-import time
+from PrimeTools import timer
 
+
+@timer
 def find_multiples():
     grand_sum = 0
     for n in range(1000):
-        if n%3==0: grand_sum += n
-        elif n%5==0: grand_sum += n
+        if n % 3 == 0:
+            grand_sum += n
+        elif n % 5 == 0:
+            grand_sum += n
     print(grand_sum)
 
-start_time = time.clock()
+
 find_multiples()
-print(time.clock() - start_time)
+
 

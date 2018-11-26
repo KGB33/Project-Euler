@@ -5,10 +5,10 @@ Created on Fri Sep 14 11:24:23 2018
 @author: kelton
 """
 import random
-from time import clock
+from time import perf_counter_ns
 
 
-def littleFermat(number, trials):
+def little_fermat(number, trials):
     """
     Uses Femats little thearom to test for primeality
     @param number: int that is being checked
@@ -27,7 +27,7 @@ def littleFermat(number, trials):
     return True # probably
 
 
-def divisionTest(number):
+def division_test(number):
     """
     Uses division to test for primeality
     @param number: int that is being checked
@@ -80,7 +80,7 @@ def largest_prime_less_than(number):
         print("No Primes Less than 2")
         return None
     for i in range((number - 1), 0, -1):
-        if divisionTest(i):
+        if division_test(i):
             return i
 
 
@@ -90,8 +90,10 @@ def timer(func):
     :param func: The function to be timed
     prints time elapsed
     """
-    before = clock()
-    rv = func()
-    after = clock()
-    print("Time Elapsed: {0}".format(after-before))
-    return rv
+    def wrapper_timer(*args, **kwargs):
+        before = perf_counter_ns()
+        rv = func(*args, **kwargs)
+        after = perf_counter_ns()
+        print("Time Elapsed: {0}".format(after-before))
+        return rv
+    return wrapper_timer
