@@ -39,7 +39,7 @@ What is the greatest product of four adjacent numbers in the same direction
 """
 
 
-@timer
+@timer()
 def main():
     maxes = {}
     

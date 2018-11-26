@@ -6,6 +6,7 @@ Created on Fri Sep 14 11:24:23 2018
 """
 import random
 from time import perf_counter_ns
+import functools
 
 
 def little_fermat(number, trials):
@@ -84,16 +85,46 @@ def largest_prime_less_than(number):
             return i
 
 
-def timer(func):
-    """
-    Decorator that times the functions
-    :param func: The function to be timed
-    prints time elapsed
-    """
-    def wrapper_timer(*args, **kwargs):
-        before = perf_counter_ns()
-        rv = func(*args, **kwargs)
-        after = perf_counter_ns()
-        print("\n\nTime Elapsed: {:.3f}ms".format((after-before) / 1000000))
-        return rv
-    return wrapper_timer
+class timer(object):
+
+    # TODO: add optional param for number of trials, then average
+    def __init__(self, unit='ms'):
+        """
+        Decorator that times the functions
+        :param unit: Unit that the time is displayed in, default is ms
+        prints time elapsed
+        """
+        self.unit = unit
+
+    def __call__(self, f):
+        """
+        :param f: The function to be timed
+        """
+        def wrapper_timer(*args, **kwargs):
+            # times and runs the function
+            before = perf_counter_ns()
+            rv = f(*args, **kwargs)
+            after = perf_counter_ns()
+            # Calculates total time and converts to chosen units
+            if self.unit == 'ns':
+                con = pow(10, 0)
+            elif self.unit == 'us':
+                con = pow(10, 3)
+            elif self.unit == 'ms':
+                con = pow(10, 6)
+            elif self.unit == 's':
+                con = pow(10, 9)
+            elif self.unit == 'min':
+                con = 6 * pow(10, 10)
+            else:
+                print("\n\nBad unit given to @timer, Valid units are:"
+                      "\n\tns, us, ms, s, min"
+                      "\n\tUsing default ms")
+                con = pow(10, 6)
+                self.unit = 'ms'
+            time = '{:.3f}'.format((after - before) / con)
+            # prints output
+            print("\n\nTime Elapsed: {0}{1}".format(time, self.unit))
+            return rv
+        return wrapper_timer
+
