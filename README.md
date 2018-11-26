@@ -1,5 +1,3 @@
 # Project-Euler
-Project Euler questions
 
-
-Various questions pulled from https://projecteuler.net/
+Various Problems from https://projecteuler.net/

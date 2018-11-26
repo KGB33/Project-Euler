@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+import math
+from PrimeTools import timer, division_test
 """
 Created on Fri Aug  3 22:57:07 2018
 
@@ -22,57 +23,45 @@ It turns out that the conjecture was false.
 What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?
 
 Solved! 5777, 
-Slight problem with carmickal numbers messing up the prime test
 """
-import math
-import random
 
+
+@timer(unit='s')
 def main():
     soFarSoGood = True
     number = 3
-    primes = [2,3,5,7]
+    primes = [2, 3, 5, 7]
     while soFarSoGood:
         
-        #checks number for composateness
-        if isPrime(number):
-            print("Is Prime: ", number)
+        # checks number for composites
+        if division_test(number):
+            # print("Is Prime: ", number)
             number = number + 2   
         
         else:
-            #checks to make sure primes array has all possible primes within range
+            # checks to make sure primes array has all possible primes within range
             if primes[len(primes) - 1] < number:
-                primes = nextPrime(primes, number)
-                #print("Primes: ", primes, " Number: ", number)
+                primes = next_prime(primes, number)
+                # print("Primes: ", primes, " Number: ", number)
                 
-            #takes some prime, and sees if any solution is avalable
+            # takes some prime, and sees if any solution is avalable
             default = False
             for prime in primes:
                 if math.sqrt((number-prime)/2)%1 == 0:
-                    #Conjecture holds for Number
-                    print("Conjt. Holds: ", number)
+                    # Conjecture holds for Number
+                    # print("Conjt. Holds: ", number)
                     default = True
                     number = number + 2
                     break
-            #does not hold
+            # does not hold
             soFarSoGood = default
-    print("FAIL!!!: ", number)
-        
-        
-def isPrime(number):
-        #Checks Carmicheal Numbers
-    if number in [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, 399001, 410041, 449065, 488881, 512461]:
-        return False
-    #Fermats Little Therom
-    for i in range(1,10):
-        base = random.randint(2, number - 1)
-        if pow(base, number - 1)%number != 1:
-            return False
-    return True #probably 
+    print("Solution: ", number)
 
-def nextPrime(primes, endNum):
-    for i in range(primes[len(primes) - 1] + 1, endNum):
-        if isPrime(i):
-            primes = primes + [i,]
+
+def next_prime(primes, end_num):
+    for i in range(primes[len(primes) - 1] + 1, end_num):
+        if division_test(i):
+            primes = primes + [i, ]
     return primes
     
 
