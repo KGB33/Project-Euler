@@ -1,5 +1,4 @@
 from PrimeTools import timer
-import time
 """
 Created on Mon Sep 17 13:39:47 2018
 

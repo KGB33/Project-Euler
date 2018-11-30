@@ -2,11 +2,10 @@
 """
 Created on Fri Sep 14 11:24:23 2018
 
-@author: kelton
+@author: Kelton
 """
 import random
 from time import perf_counter_ns
-import functools
 
 
 def little_fermat(number, trials):
@@ -34,7 +33,7 @@ def division_test(number):
     @param number: int that is being checked
     """
     for divisor in range(2, int(number/2) + 1):
-        if number%divisor == 0:
+        if number % divisor == 0:
             return False
     return True
 
@@ -56,7 +55,7 @@ def sieve_of_eratosthenes(upperbound):
     return sieve
 
 
-def find_factors(number):
+def prime_factors(number):
     """
     Creates a dic of prime factors, where the key is the prime,
     and the entry is the power they key is raised to
