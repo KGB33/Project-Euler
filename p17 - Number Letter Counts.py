@@ -20,6 +20,7 @@ For example:
 The use of "and" when writing out numbers is in compliance with British usage.
 """
 
+
 @timer()
 def p17():
     total_letters = 0
