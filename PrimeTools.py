@@ -96,6 +96,7 @@ class timer(object):
         self.unit = unit
 
     def __call__(self, f):
+        # TODO: Add a user frendly error message for when the () are forgotten
         """
         :param f: The function to be timed
         """

@@ -37,5 +37,6 @@ def p17():
 
     print(total_letters)
 
+
 p17()
 

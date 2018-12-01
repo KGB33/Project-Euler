@@ -43,7 +43,7 @@ def main():
     maxes = {}
     
     # read in text
-    with open("p11 - data.txt") as file:
+    with open("data/p11 - data.txt") as file:
         text_grid = file.read()
     
     # convert text to 2D array
