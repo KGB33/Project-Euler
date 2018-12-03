@@ -30,7 +30,7 @@ def p18():
 
 def make_array():
     final = []
-    with open("data/p18 - data.txt") as f:
+    with open("data/p018 - data.txt") as f:
         for line in f:
             hold_int = []
             hold_str = line.split()

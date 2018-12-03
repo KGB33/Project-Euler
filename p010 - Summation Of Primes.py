@@ -15,16 +15,15 @@ Find the sum of all the primes below two million.
 import time
 import PrimeTools
 
+@PrimeTools.timer()
 def main():
-   upperbound = 2000000
-   total = 0
-   sieve = PrimeTools.sieve_of_eratosthenes(upperbound)
-   for entry in sieve:
-       if sieve[entry] == True:
-           total = total + entry
-   print(total)
+    upperbound = 2000000
+    total = 0
+    sieve = PrimeTools.sieve_of_eratosthenes(upperbound)
+    for entry in sieve:
+        if sieve[entry] == True:
+            total = total + entry
+    print(total)
 
 
-start_time = time.clock()
 main()
-print('Time: ', time.clock() - start_time)
