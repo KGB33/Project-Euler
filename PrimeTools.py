@@ -6,6 +6,7 @@ Created on Fri Sep 14 11:24:23 2018
 """
 import random
 from time import perf_counter_ns
+import numpy as np
 
 
 def little_fermat(number, trials):
@@ -84,16 +85,41 @@ def largest_prime_less_than(number):
             return i
 
 
+def perfect_factors(n):
+    """
+    Generates perfect factors of number starting with 1
+    :param n: number to find the factors of
+    :yields: next factor
+    """
+    # "1" is always a divisor (at least for our purposes)
+    yield 1
+
+    largest = int(np.sqrt(n))
+
+    # special-case square numbers to avoid yielding the same divisor twice
+    if largest * largest == n:
+        yield largest
+    else:
+        largest += 1
+
+    # all other divisors
+    for i in range(2, largest):
+        if n % i == 0:
+            yield i
+            yield n / i
+
+
 class timer(object):
 
     # TODO: add optional param for number of trials, then average
-    def __init__(self, unit='ms'):
+    def __init__(self, unit='ms', message=None):
         """
         Decorator that times the functions
         :param unit: Unit that the time is displayed in, default is ms
         prints time elapsed
         """
         self.unit = unit
+        self.message = message
 
     def __call__(self, f):
         # TODO: Add a user frendly error message for when the () are forgotten
@@ -125,6 +151,8 @@ class timer(object):
             time = '{:.3f}'.format((after - before) / con)
             # prints output
             print("\n\nTime Elapsed: {0}{1}".format(time, self.unit))
+            if self.message is not None:
+                print("\t{}".format(self.message))
             return rv
         return wrapper_timer
 
