@@ -33,6 +33,8 @@ def division_test(number):
     Uses division to test for primeality
     @param number: int that is being checked
     """
+    if number < 2:
+        return False
     for divisor in range(2, int(number/2) + 1):
         if number % divisor == 0:
             return False
@@ -46,7 +48,7 @@ def sieve_of_eratosthenes(upperbound):
     2 to upperbound, and boolean is True if X is prime
     @param upperbound - upper limit for the sieve
     """
-    sieve = {x : True for x in range(2, upperbound)}
+    sieve = {x: True for x in range(2, upperbound)}
     for i in range(2, int(pow(upperbound, .5) + 1)):
         if sieve[i]:  # value is boolean
             j = pow(i, 2)
@@ -54,6 +56,19 @@ def sieve_of_eratosthenes(upperbound):
             sieve[j] = False
             j = j + i
     return sieve
+
+
+def bool_dictionary_to_array(b_dict):
+    """
+    Mostly used with sieve_of_eratosthenes
+    :param b_dict: A dictionary where every key has a boolean value
+    :return: a list with only the keys associated with True
+    """
+    result = []
+    for key in b_dict:
+        if b_dict[key]:
+            result += [key, ]
+    return result
 
 
 def prime_factors(number):
