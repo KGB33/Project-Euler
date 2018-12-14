@@ -74,15 +74,4 @@ There are 8 increments of coins:
      50p        (f)
     100p (1#)   (g)
     200p (2#)   (h)
-
-Observe the following formula:
-
-    a * 1p + b * 2p + c * 5p + ... +  h * 200p = 200p
-    
-        Where all terms are positive integers. 
-    
-Rephrasing the question in terms of this formula give:
-
-    How many unique sets of solutions exist? 
-        
 """
