@@ -23,3 +23,8 @@ def find_multiples():
 find_multiples()
 
 
+@timer(unit='ns')
+def array_way():
+    print(sum([x for x in range(1000) if x % 3 == 0 or x % 5 == 0]))
+
+array_way()
