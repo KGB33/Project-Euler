@@ -1,4 +1,5 @@
 from PrimeTools import timer
+
 """
 Maximum path sum II
 Problem 67 
@@ -35,8 +36,8 @@ def make_array():
             hold_int = []
             hold_str = line.split()
             for char in hold_str:
-                hold_int = hold_int + [int(char), ]
-            final = final + [hold_int, ]
+                hold_int = hold_int + [int(char)]
+            final = final + [hold_int]
     return final
 
 

@@ -1,4 +1,4 @@
-'''
+"""
 Double-base palindromes
     Problem 36
 
@@ -12,7 +12,7 @@ is palindromic in both bases.
 Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
 
 (Please note that the palindromic number, in either base, may not include leading zeros.)
-'''
+"""
 from PrimeTools import timer
 
 
@@ -31,12 +31,11 @@ def p036():
 
 
 def get_reversed_string(s):
-    output = ''
+    output = ""
     for x in reversed(s):
         output += x
     return output
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p036()
-

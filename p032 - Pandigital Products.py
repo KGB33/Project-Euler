@@ -1,4 +1,3 @@
-
 # Pandigital products
 # Problem 32
 """
@@ -23,7 +22,7 @@ from PrimeTools import timer
 from itertools import permutations
 
 
-@timer(message='By Multiplication')
+@timer(message="By Multiplication")
 def p032_by_multiplication():
     TBD = 10000
     products = []
@@ -35,12 +34,12 @@ def p032_by_multiplication():
             if (a * b) in products:
                 continue
             if is_pandigital(num):
-                print('{} * {} = {}'.format(a, b, a * b))
+                print("{} * {} = {}".format(a, b, a * b))
                 products.append(a * b)
-    print('\n\nSolution: {}'.format(sum(products)))
+    print("\n\nSolution: {}".format(sum(products)))
 
 
-@timer(message='By Permutation')
+@timer(message="By Permutation")
 def p032_by_permutations():
     digits = [str(x) for x in range(1, 10)]  # digits 1 - 9
     products = []
@@ -48,7 +47,7 @@ def p032_by_permutations():
         c = int(f[5] + f[6] + f[7] + f[8])
         if c in products:
             continue
-        if f[0] != '1':
+        if f[0] != "1":
             # when the first digit is not a 1 then the 1st digit can be its own number
             a = int(f[0])
             b = int(f[1] + f[2] + f[3] + f[4])
@@ -61,7 +60,8 @@ def p032_by_permutations():
         if a * b == c:
             products.append(c)
             print(c)
-    print('\n\nSolution: {}'.format(sum(products)))
+    print("\n\nSolution: {}".format(sum(products)))
+
 
 def is_pandigital(num):
     """

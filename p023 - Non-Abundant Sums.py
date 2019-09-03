@@ -26,15 +26,20 @@ class p023(object):
     ~ 450ms to run program
     ~ 650ms total
     """
+
     @timer(message="Init Time")
     def __init__(self):
         self.abundants = [x for x in range(1, 28123 + 1) if p023.is_abundant(x)]
         self.abundants_set = set(self.abundants)
         # print(self.abundants)
 
-    @timer(message='Call Time')
+    @timer(message="Call Time")
     def __call__(self):
-        print("\n\nSolution: {}".format(sum(x for x in range(1, 28123 + 1) if not self.is_abundant_sum(x))))
+        print(
+            "\n\nSolution: {}".format(
+                sum(x for x in range(1, 28123 + 1) if not self.is_abundant_sum(x))
+            )
+        )
 
     def is_abundant_sum(self, number):
         for i in self.abundants:
@@ -52,11 +57,10 @@ class p023(object):
             return sum(perfect_factors(number)) > number
 
 
-@timer(message='Total Time')
+@timer(message="Total Time")
 def main():
     p = p023()
     p()
 
 
 main()
-

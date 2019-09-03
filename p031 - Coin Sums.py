@@ -18,7 +18,7 @@ How many different ways can £2 be made using any number of coins?
 from PrimeTools import timer
 
 
-@timer(unit='s')
+@timer(unit="s")
 def p031():
     total = 0
     for a in range(0, 200 + 1):
@@ -37,7 +37,7 @@ def p031():
                                         break
                                     else:
                                         continue
-    print('\nSolution: {}'.format(total))
+    print("\nSolution: {}".format(total))
 
 
 def sum_pence(*coins):
@@ -52,9 +52,8 @@ def coin_range(value, *previous_coins):
     return ((200 - sum_pence(previous_coins)) // value) + 1
 
 
-#print(sum_pence(1, 2))
+# print(sum_pence(1, 2))
 p031()
-
 
 
 # Notes

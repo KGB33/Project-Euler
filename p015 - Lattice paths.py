@@ -34,13 +34,13 @@ Answer: 137846528820
 from scipy.special import comb
 import time
 
+
 def main():
     size = 20
     n = size * 2
     k = size
-    print(comb(n, k, exact = True))
-    
-    
+    print(comb(n, k, exact=True))
+
 
 print("Running, do not shut off Computer...")
 start_time = time.clock()

@@ -25,7 +25,6 @@ from PrimeTools import timer
 from itertools import product
 
 
-
 @timer()
 def p033():
     solutions = ()
@@ -37,7 +36,7 @@ def p033():
             n = concatenate(n_arr)
 
             # Breaks if the Frac is not less than 1
-            if n/d >= 1:
+            if n / d >= 1:
                 break
 
             # Checks to see if the numerators and denominators share digits
@@ -51,20 +50,29 @@ def p033():
                     r_n.remove(a)
                     r_n = sum(r_n)
 
-                    if r_n/r_d == n/d:
-                        solutions += ({'n': n, 'd': d, 'r_n': r_n, 'r_d': r_d},)
-
+                    if r_n / r_d == n / d:
+                        solutions += ({"n": n, "d": d, "r_n": r_n, "r_d": r_d},)
 
     p_n = 1
     p_d = 1
     for i, sol in enumerate(solutions):
-        print('Solution {}:\n\t{}/{} = {}\n\t{}/{} = {}'.format(i+1, sol['n'], sol['d'], sol['n'] / sol['d'], sol['r_n'], sol['r_d'], sol['r_n'] / sol['r_d']))
-        p_n *= sol['n']
-        p_d *= sol['d']
+        print(
+            "Solution {}:\n\t{}/{} = {}\n\t{}/{} = {}".format(
+                i + 1,
+                sol["n"],
+                sol["d"],
+                sol["n"] / sol["d"],
+                sol["r_n"],
+                sol["r_d"],
+                sol["r_n"] / sol["r_d"],
+            )
+        )
+        p_n *= sol["n"]
+        p_d *= sol["d"]
 
         p_n, p_d = simplify_fraction(p_n, p_d)
 
-    print('Grand Solution: {}/{}'.format(p_n, p_d))
+    print("Grand Solution: {}/{}".format(p_n, p_d))
 
 
 def simplify_fraction(numerator, denomonator):
@@ -84,7 +92,7 @@ def simplify_fraction(numerator, denomonator):
 
 
 def concatenate(num):
-    result = ''
+    result = ""
     for digit in num:
         result += str(digit)
     return int(result)
@@ -123,4 +131,3 @@ def build_num_from_prime_factors(factors):
 
 
 p033()
-

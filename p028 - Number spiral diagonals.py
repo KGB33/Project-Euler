@@ -31,7 +31,7 @@ def p028():
         lap += 1
         if current_num >= 1001 * 1001:
             break
-    print('Solution: {}'.format(total))
+    print("Solution: {}".format(total))
     # print('Current Num: ', current_num) # verify it stops at the correct number
 
 

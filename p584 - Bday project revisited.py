@@ -52,59 +52,55 @@ What would be the answer (rounded to eight places after the decimal point)
 import time
 import random
 
+
 def main():
-    #Wimwi Test
-    numWimwi = bpr(3,1,10)
-    print('Wimwi: ', numWimwi)
-    print('Differance: ', numWimwi - 5.78688636)
+    # Wimwi Test
+    numWimwi = bpr(3, 1, 10)
+    print("Wimwi: ", numWimwi)
+    print("Differance: ", numWimwi - 5.78688636)
     print()
-    #Jokar
-    numJokar = 'unk' #bpr(3, 7, 100)
-    print('Jokar :', numJokar)
-    print('Differance: ', numJokar) # - 8.48967364)
+    # Jokar
+    numJokar = "unk"  # bpr(3, 7, 100)
+    print("Jokar :", numJokar)
+    print("Differance: ", numJokar)  # - 8.48967364)
     print()
-    #Earth
-    numEarth = 'unk' #bpr(4, 7, 365)
-    print('Earth: ', numEarth)
-    
+    # Earth
+    numEarth = "unk"  # bpr(4, 7, 365)
+    print("Earth: ", numEarth)
+
+
 def bpr(numPeopleRequired, numDaysApart, lenYear):
-    days = {x:0 for x in range(0, lenYear)}
+    days = {x: 0 for x in range(0, lenYear)}
     withinDays = False
     while not withinDays:
-        
-        #adds a new Person to the room
+
+        # adds a new Person to the room
         days[addBirthDay(lenYear)] += 1
         print(days)
-        
-        #Checks to see if n number of bdays are within m days
+
+        # Checks to see if n number of bdays are within m days
         for i in range(0, lenYear):
             totalBDays = 0
             for j in range(i, i + numDaysApart + 1):
                 totalBDays += days[j]
-                print('total days: ',totalBDays)
-                print('i: ', i, ' i + numDays: ', i+numDaysApart, ' j: ', j)
+                print("total days: ", totalBDays)
+                print("i: ", i, " i + numDays: ", i + numDaysApart, " j: ", j)
                 if totalBDays > numPeopleRequired - 1:
                     withinDays = True
                     break
                 break
-        
+
     # Counts numPeople In room
     totalPeople = 0
     for day, numBDays in days.items():
         totalPeople += numBDays
     return totalPeople
-        
-
-
-
 
 
 def addBirthDay(lenYear):
-    return random.randint(0,lenYear - 1)
+    return random.randint(0, lenYear - 1)
 
 
-
-    
 startTime = time.clock()
 main()
-print('\n\nTime: ', time.clock() - startTime)
+print("\n\nTime: ", time.clock() - startTime)

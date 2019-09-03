@@ -37,11 +37,11 @@ def p026():
 
 def get_repeated(num):
     r = []
-    c_r = .1
+    c_r = 0.1
     while True:
         c_r = (c_r * 10) % num
         if c_r not in r:
-            r += [c_r, ]
+            r += [c_r]
         else:
             return len(r)
 

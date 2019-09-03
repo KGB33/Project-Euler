@@ -40,7 +40,7 @@ def p037():
 
 def is_right_truncatable(num):
     for i, digit in enumerate(num):
-        if division_test(int(num[:i + 1])):
+        if division_test(int(num[: i + 1])):
             continue
         else:
             return False
@@ -56,5 +56,5 @@ def is_left_truncatable(num):
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p037()

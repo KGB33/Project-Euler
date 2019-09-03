@@ -32,28 +32,30 @@ done, Answer = 837799
 
 import math
 
+
 def main():
     maxLength = 0
-    for start in range(5,999999):
+    for start in range(5, 999999):
         number = start
         length = 0
-        while math.log(number,2) != 0:
-            if number % 2 == 0: #even
+        while math.log(number, 2) != 0:
+            if number % 2 == 0:  # even
                 number = doEven(number)
                 length = length + 1
-            else: #odd
+            else:  # odd
                 number = doOdd(number)
                 length = length + 1
         if length > maxLength:
             maxLength = length
-            print('Length: ', length, '\tStart: ', start)
-            
-        
+            print("Length: ", length, "\tStart: ", start)
+
+
 def doEven(number):
     return number / 2
+
 
 def doOdd(number):
     return 3 * number + 1
 
-    
+
 main()

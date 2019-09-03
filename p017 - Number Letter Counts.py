@@ -1,5 +1,6 @@
 from PrimeTools import timer
 import inflect  # is using this cheating, maybe, maybe not, who knows
+
 """
 Number letter counts
 Problem 17 
@@ -28,9 +29,9 @@ def p17():
     for _ in range(1, 1000 + 1):
         word = ie.number_to_words(_)
         for letter in word:
-            if letter == '-':
+            if letter == "-":
                 pass
-            elif letter == ' ':
+            elif letter == " ":
                 pass
             else:
                 total_letters += 1
@@ -39,4 +40,3 @@ def p17():
 
 
 p17()
-

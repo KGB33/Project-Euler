@@ -22,52 +22,34 @@ Find F(9×1018).
 import time
 import math
 
+
 def main():
-    n = (9 * pow(10,18))
+    n = 9 * pow(10, 18)
     fN = []
     for number in range((3 * pow(10, 6)), n):
-    #case 1, a = b
-        if pow(number, .2)%1 == 0:
+        # case 1, a = b
+        if pow(number, 0.2) % 1 == 0:
             fN = fN + [number]
-        
-    #case 2: a != b
-        #step 1, assume a or b = 1
-        if pow(number, .5)%1 == 0 or pow(number, 1/3)%1 == 0:
+
+        # case 2: a != b
+        # step 1, assume a or b = 1
+        if pow(number, 0.5) % 1 == 0 or pow(number, 1 / 3) % 1 == 0:
             continue
-        #step 2, check b's for an a that is an Int
-        for b in range(2, math.trunc(pow(number/4, 1/3)) + 1):
-            if pow(number/pow(b,3), .5)%1 == 0:
+        # step 2, check b's for an a that is an Int
+        for b in range(2, math.trunc(pow(number / 4, 1 / 3)) + 1):
+            if pow(number / pow(b, 3), 0.5) % 1 == 0:
                 fN = fN + [number]
-        
-            
+
     fN = list(set(fN))
     fN.sort()
-    print('F(',n,') = ', len(fN))
-    
+    print("F(", n, ") = ", len(fN))
+
     print(fN)
 
 
 startTime = time.clock()
 main()
-print('Time: ', time.clock() - startTime)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("Time: ", time.clock() - startTime)
 
 
 """
@@ -111,4 +93,4 @@ def main():
     print('F(',n,') = ', len(fN))
     
     print(fN)
-"""  
+"""

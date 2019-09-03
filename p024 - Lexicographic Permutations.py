@@ -25,7 +25,7 @@ from itertools import permutations
 @timer()
 def p024():
     counter = 0
-    for p in permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ]):
+    for p in permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]):
         if counter == 999999:  # 1,000,000th element
             print("Solution: {}".format(list_to_string(p)))
             break
@@ -33,7 +33,7 @@ def p024():
 
 
 def list_to_string(l):
-    result = ''
+    result = ""
     for element in l:
         result += str(element)
     return result

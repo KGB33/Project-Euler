@@ -1,4 +1,5 @@
 from PrimeTools import timer
+
 """
 Amicable numbers
 Problem 21 
@@ -15,7 +16,7 @@ Evaluate the sum of all the amicable numbers under 10000.
 """
 
 
-@timer(unit='s')
+@timer(unit="s")
 def p21():
     total = 0
     upper_bound = 10000

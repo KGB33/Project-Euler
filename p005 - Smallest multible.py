@@ -1,4 +1,4 @@
-#project Euler, Problem 5
+# project Euler, Problem 5
 
 """
 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
@@ -9,23 +9,25 @@ answer = 232792560
 """
 import time
 
+
 def main():
-    numbers = [12,13,14,15,16,17,18,19,20]
+    numbers = [12, 13, 14, 15, 16, 17, 18, 19, 20]
     winner = 11
     for element in numbers:
         winner = lcm(winner, element)
     print(winner)
-    
-     
 
-def lcm(a,b):
+
+def lcm(a, b):
     return a * b // gcd(a, b)
-      
-    
-def gcd(a,b):
-    while b:      
+
+
+def gcd(a, b):
+    while b:
         a, b = b, a % b
     return a
+
+
 start_time = time.clock()
 main()
 print(time.clock() - start_time)

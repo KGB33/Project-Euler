@@ -1,4 +1,5 @@
 from PrimeTools import timer
+
 """
 Created on Mon Sep 17 13:39:47 2018
 
@@ -41,15 +42,15 @@ What is the greatest product of four adjacent numbers in the same direction
 @timer()
 def main():
     maxes = {}
-    
+
     # read in text
     with open("data/p011 - data.txt") as file:
         text_grid = file.read()
-    
+
     # convert text to 2D array
-    array = text_grid.split('\n')
+    array = text_grid.split("\n")
     array = [i.split() for i in array]
-    
+
     # convert strings in array to ints
     for row in array:
         for i in range(0, len(row)):
@@ -104,7 +105,7 @@ def find_max_vertical(array):
             if product > maximum:
                 maximum = product
     return maximum
-                
+
 
 def find_max_lr_diagonal(array):
     maximum = 0
@@ -181,4 +182,3 @@ def print_dic(dic):
 
 
 main()
-

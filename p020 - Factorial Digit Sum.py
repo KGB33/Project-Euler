@@ -1,5 +1,6 @@
 from math import factorial
 from PrimeTools import timer
+
 """
 Factorial digit sum
 Problem 20 

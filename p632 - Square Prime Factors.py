@@ -25,10 +25,14 @@ def problem_632_take_num_find_factors():
             total += 1
             product = product * number
             product = product % modulo
-    print("With Upperbound: {0}"
-          "\n\tThere are {1} Numbers"
-          "\n\tWith exactry {2} Square Factors"
-          "\n\tThe product of those numbers is: {3}".format(upper_bound, total, k, product))
+    print(
+        "With Upperbound: {0}"
+        "\n\tThere are {1} Numbers"
+        "\n\tWith exactry {2} Square Factors"
+        "\n\tThe product of those numbers is: {3}".format(
+            upper_bound, total, k, product
+        )
+    )
 
 
 def has_k_square_prime_factors(number, k):
@@ -51,8 +55,6 @@ def has_k_square_prime_factors(number, k):
     else:
         # print("\tReturned: False")
         return False
-
-
 
 
 problem_632()

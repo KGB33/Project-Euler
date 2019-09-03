@@ -25,20 +25,18 @@ def p034():
             continue
         sol = sum([math.factorial(int(x)) for x in str(num)])
         if sol == num:
-            fac_sum += [sol, ]
-            valid_nums += [num, ]
+            fac_sum += [sol]
+            valid_nums += [num]
     print(fac_sum)
     print(sum(fac_sum))
 
 
 def has_9s(num):
     num = str(num)
-    if '9' in str(num):
+    if "9" in str(num):
         return True
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p034()
-
-

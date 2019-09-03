@@ -37,7 +37,7 @@ Find the product of the coefficients, a and b,
 from PrimeTools import timer, division_test
 
 
-@timer(unit='s')
+@timer(unit="s")
 def p027():
     maximum = 0
     # Check all possible b's
@@ -56,9 +56,11 @@ def p027():
                 max_b = b
 
     # Print solutions
-    print("A: {} B: {}"
-          "\n\tSolution: {}"
-          "\n\tLength: {}".format(max_a, max_b, max_a * max_b, maximum))
+    print(
+        "A: {} B: {}"
+        "\n\tSolution: {}"
+        "\n\tLength: {}".format(max_a, max_b, max_a * max_b, maximum)
+    )
 
 
 def get_length(a, b):

@@ -18,7 +18,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 from PrimeTools import timer
 
 
-@timer(unit='s')
+@timer(unit="s")
 def p030():
     numbers_found = []
     for number in range(2, 1000000):
@@ -28,8 +28,7 @@ def p030():
             total += pow(int(digit), 5)
         if total == number:
             numbers_found.append(number)
-    print("Solution: {}"
-          "\n\tNumbers: {}".format(sum(numbers_found), numbers_found))
+    print("Solution: {}" "\n\tNumbers: {}".format(sum(numbers_found), numbers_found))
 
 
 p030()
@@ -67,4 +66,3 @@ p030()
         Therefore, our largest number is between 5 - 6 digits,
         hence the upper-bound is 1,000,000
 """
-

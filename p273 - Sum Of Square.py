@@ -19,42 +19,40 @@ definitions:
 
 
 """
-#import itertools
+# import itertools
 import math
+
 
 def main():
     n = 1
-    sN= ()
-    #loop that iterates through all possiblities and generates N's
+    sN = ()
+    # loop that iterates through all possiblities and generates N's
     for b in range(1, int(math.sqrt(5030362804658426121702685610))):
-        for a in range(0,b):
-            n = pow(a,2) + pow(b,2)
+        for a in range(0, b):
+            n = pow(a, 2) + pow(b, 2)
             print(n, b, a)
             if n > 5030362804658426121702685610:
                 break
             if prime_factor_4k_1(n):
                 sN = sN + (a,)
     print(sN)
-            
-    
-    
+
+
 def prime_factor_4k_1(number):
-     #all primes of the form p = 4k+1 (from OEIS: http://oeis.org/A002313)
+    # all primes of the form p = 4k+1 (from OEIS: http://oeis.org/A002313)
     ftPrimes = [2, 5, 13, 17, 29, 37, 41, 53, 61, 73, 89, 97, 101, 109, 113, 137, 149]
     n = 2
     factors = (1,)
     while n <= number:
-        if number%n==0:
+        if number % n == 0:
             factors = factors + (n,)
-            number = number/n
+            number = number / n
         else:
-            n=n+1
+            n = n + 1
     for number in factors:
         if number not in ftPrimes:
             return False
     return True
-            
-
 
 
 main()

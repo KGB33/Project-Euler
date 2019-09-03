@@ -11,6 +11,7 @@ four million, find the sum of the even-valued terms.
 """
 import time
 
+
 def count_fibonacci():
     e = 1
     p = 1
@@ -19,9 +20,10 @@ def count_fibonacci():
         e_hold = e
         e = p + e
         p = e_hold
-        if e%2==0:
+        if e % 2 == 0:
             sum_even += e
     print(sum_even)
+
 
 start_time = time.clock()
 count_fibonacci()

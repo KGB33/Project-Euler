@@ -1,4 +1,5 @@
 from PrimeTools import timer
+
 """
 Power digit sum
 Problem 16 

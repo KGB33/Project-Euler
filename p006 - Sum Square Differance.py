@@ -15,15 +15,17 @@ natural numbers and the square of the sum.
 """
 import time
 
+
 def sumsquare():
-    s=0
-    p=0
+    s = 0
+    p = 0
     for i in range(101):
-        s=s+i
-        p=p+i*i
-    s=s*s
-    ssd=s-p
+        s = s + i
+        p = p + i * i
+    s = s * s
+    ssd = s - p
     print(ssd)
+
 
 start_time = time.clock()
 sumsquare()

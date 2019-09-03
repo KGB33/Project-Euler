@@ -19,11 +19,8 @@ def main():
         if divisionTest(p):
             i += 1
     print(p)
-        
-    
+
 
 start_time = time.clock()
 main()
 print(time.clock() - start_time)
-
-    

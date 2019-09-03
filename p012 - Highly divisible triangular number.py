@@ -36,32 +36,32 @@ Answer: 76576500
 
 import time
 
+
 def main():
     condition = False
     n = 4
     tri_num = 6
     while condition == False:
         factors = FindFactors(tri_num)
-        #print(factors)
+        # print(factors)
         if len(factors) > 500:
             print(tri_num)
             condition = True
         tri_num = tri_num + n
         n = n + 1
-        
-    
+
+
 def FindFactors(number):
     i = 1
     factors = []
     while i not in factors:
-        if number%i == 0:
-            factors = factors + [i, int(number/i)]
+        if number % i == 0:
+            factors = factors + [i, int(number / i)]
         i = i + 1
     factors.sort()
     return factors
 
-        
-        
+
 start_time = time.clock()
 main()
 print("Time: ", time.clock() - start_time)

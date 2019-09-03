@@ -15,6 +15,7 @@ Find the sum of all the primes below two million.
 import time
 import PrimeTools
 
+
 @PrimeTools.timer()
 def main():
     upperbound = 2000000

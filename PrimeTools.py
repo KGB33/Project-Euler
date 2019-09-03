@@ -17,15 +17,49 @@ def little_fermat(number, trials):
      the higher the number the more accurate (must be 2 or greater)
     """
     # Checks Carmicheal Numbers up to ~ 500,000
-    if number in [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, 399001, 410041, 449065, 488881, 512461]:
+    if number in [
+        561,
+        1105,
+        1729,
+        2465,
+        2821,
+        6601,
+        8911,
+        10585,
+        15841,
+        29341,
+        41041,
+        46657,
+        52633,
+        62745,
+        63973,
+        75361,
+        101101,
+        115921,
+        126217,
+        162401,
+        172081,
+        188461,
+        252601,
+        278545,
+        294409,
+        314821,
+        334153,
+        340561,
+        399001,
+        410041,
+        449065,
+        488881,
+        512461,
+    ]:
         return False
     # Fermats Little Therom
-    for i in range(1,trials):
+    for i in range(1, trials):
         base = random.randint(2, number - 1)
         if pow(base, number - 1) % number != 1:
             return False
 
-    return True # probably
+    return True  # probably
 
 
 def division_test(number):
@@ -35,7 +69,7 @@ def division_test(number):
     """
     if number < 2:
         return False
-    for divisor in range(2, int(number/2) + 1):
+    for divisor in range(2, int(number / 2) + 1):
         if number % divisor == 0:
             return False
     return True
@@ -49,7 +83,7 @@ def sieve_of_eratosthenes(upperbound):
     @param upperbound - upper limit for the sieve
     """
     sieve = {x: True for x in range(2, upperbound)}
-    for i in range(2, int(pow(upperbound, .5) + 1)):
+    for i in range(2, int(pow(upperbound, 0.5) + 1)):
         if sieve[i]:  # value is boolean
             j = pow(i, 2)
         while j < upperbound:
@@ -67,7 +101,7 @@ def bool_dictionary_to_array(b_dict):
     result = []
     for key in b_dict:
         if b_dict[key]:
-            result += [key, ]
+            result += [key]
     return result
 
 
@@ -81,7 +115,7 @@ def prime_factors(number):
     dic = {}
     while n <= number:
         if number % n == 0:
-            number = number/n
+            number = number / n
             if n in dic:
                 dic[n] += 1
             else:
@@ -127,7 +161,7 @@ def perfect_factors(n):
 class timer(object):
 
     # TODO: add optional param for number of trials, then average
-    def __init__(self, unit='ms', message=None):
+    def __init__(self, unit="ms", message=None):
         """
         Decorator that times the functions
         :param unit: Unit that the time is displayed in, default is ms
@@ -141,33 +175,36 @@ class timer(object):
         """
         :param f: The function to be timed
         """
+
         def wrapper_timer(*args, **kwargs):
             # times and runs the function
             before = perf_counter_ns()
             rv = f(*args, **kwargs)
             after = perf_counter_ns()
             # Calculates total time and converts to chosen units
-            if self.unit == 'ns':
+            if self.unit == "ns":
                 con = pow(10, 0)
-            elif self.unit == 'us':
+            elif self.unit == "us":
                 con = pow(10, 3)
-            elif self.unit == 'ms':
+            elif self.unit == "ms":
                 con = pow(10, 6)
-            elif self.unit == 's':
+            elif self.unit == "s":
                 con = pow(10, 9)
-            elif self.unit == 'min':
+            elif self.unit == "min":
                 con = 6 * pow(10, 10)
             else:
-                print("\n\nBad unit given to @timer, Valid units are:"
-                      "\n\tns, us, ms, s, min"
-                      "\n\tUsing default ms")
+                print(
+                    "\n\nBad unit given to @timer, Valid units are:"
+                    "\n\tns, us, ms, s, min"
+                    "\n\tUsing default ms"
+                )
                 con = pow(10, 6)
-                self.unit = 'ms'
-            time = '{:.3f}'.format((after - before) / con)
+                self.unit = "ms"
+            time = "{:.3f}".format((after - before) / con)
             # prints output
             print("\n\nTime Elapsed: {0}{1}".format(time, self.unit))
             if self.message is not None:
                 print("\t{}".format(self.message))
             return rv
-        return wrapper_timer
 
+        return wrapper_timer
