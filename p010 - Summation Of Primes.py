@@ -22,7 +22,7 @@ def main():
     total = 0
     sieve = PrimeTools.sieve_of_eratosthenes(upperbound)
     for entry in sieve:
-        if sieve[entry] == True:
+        if sieve[entry]:
             total = total + entry
     print(total)
 
