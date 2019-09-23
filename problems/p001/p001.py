@@ -9,7 +9,6 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 from PrimeTools import timer
 
 
-@timer(unit="ns")
 def find_multiples():
     grand_sum = 0
     for n in range(1000):
@@ -17,15 +16,13 @@ def find_multiples():
             grand_sum += n
         elif n % 5 == 0:
             grand_sum += n
-    print(grand_sum)
+    return grand_sum
 
 
-find_multiples()
-
-
-@timer(unit="ns")
 def array_way():
-    print(sum([x for x in range(1000) if x % 3 == 0 or x % 5 == 0]))
+    return sum([x for x in range(1000) if x % 3 == 0 or x % 5 == 0])
 
-if __name__ == '__main__':
-    array_way()
+
+if __name__ == "__main__":
+    print(array_way())
+    print(find_multiples())
