@@ -1,30 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 14 00:24:02 2018
-
-@author: kelto
-"""
-
-"""
-Summation of primes
-Problem 10 
-The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
-
-Find the sum of all the primes below two million.
-"""
-import time
-import PrimeTools
+from PrimeTools import sieve_of_eratosthenes
 
 
-@PrimeTools.timer()
-def main():
+def p010():
     upperbound = 2000000
     total = 0
-    sieve = PrimeTools.sieve_of_eratosthenes(upperbound)
+    sieve = sieve_of_eratosthenes(upperbound)
     for entry in sieve:
         if sieve[entry]:
             total = total + entry
-    print(total)
+    return total
 
 
-main()
+if __name__ == "__main__":
+    print(p010())
