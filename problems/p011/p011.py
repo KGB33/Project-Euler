@@ -1,5 +1,3 @@
-from PrimeTools import timer
-
 """
 Created on Mon Sep 17 13:39:47 2018
 
@@ -37,14 +35,15 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction
 (up, down, left, right, or diagonally) in the 20×20 grid?
 """
+import pathlib
 
 
-@timer()
-def main():
+def p011():
     maxes = {}
 
     # read in text
-    with open("data/p011 - data.txt") as file:
+    data = pathlib.Path(__file__).parent.absolute() / "data.txt"
+    with data.open() as file:
         text_grid = file.read()
 
     # convert text to 2D array
@@ -69,6 +68,7 @@ def main():
     # print data
     print("\n\n\nMegaMax: {0}".format(mega_max))
     print_dic(maxes)
+    return mega_max
 
 
 def find_max_horizontal(array):
@@ -181,4 +181,5 @@ def print_dic(dic):
         print("\t{0}: {1}".format(key, dic[key]))
 
 
-main()
+if __name__ == "__main__":
+    print(f"Solution: {p011()}")
