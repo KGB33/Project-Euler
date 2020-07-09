@@ -2,11 +2,11 @@ from PrimeTools import timer
 
 """
 Amicable numbers
-Problem 21 
+Problem 21
 Let d(n) be defined as the sum of proper divisors of n
 (numbers less than n which divide evenly into n).
 
-If d(a) = b and d(b) = a, where a ≠ b, 
+If d(a) = b and d(b) = a, where a ≠ b,
 then a and b are an amicable pair and each of a and b are called amicable numbers.
 
 For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110;

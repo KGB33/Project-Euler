@@ -7,7 +7,7 @@ Created on Wed Aug 29 12:53:50 2018
 
 """
 Numbers of the form a2b3
-Problem 634 
+Problem 634
 Define F(n) to be the number of integers x≤n that can be written in the form
  x=a^2*b^3, where a and b are integers not necessarily different and both greater than 1.
 
@@ -65,32 +65,32 @@ def main():
         print(product)
         if product <= n:
             fN = fN + [product,]
-    
+
         if a == b:
             a = 2
             b = b + 1
         else:
             a = a + 1
-            
+
     a = 2
     b = 2
-    product = 0      
+    product = 0
     while product <= n:
         product = pow(a,2) * pow(b,3)
         print(product)
         if product <= n:
             fN = fN + [product,]
-    
+
         if a == b:
             a = a + 1
             b = 2
         else:
             b = b + 1
-    
-           
+
+
     fN = list(set(fN))
     fN.sort()
     print('F(',n,') = ', len(fN))
-    
+
     print(fN)
 """

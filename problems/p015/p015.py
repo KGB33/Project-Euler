@@ -6,8 +6,8 @@ Created on Tue Oct  2 00:28:55 2018
 """
 """
 Lattice paths
-Problem 15 
-Starting in the top left corner of a 2×2 grid, and only being able to move 
+Problem 15
+Starting in the top left corner of a 2×2 grid, and only being able to move
 to the right and down, there are exactly 6 routes to the bottom right corner.
 
 https://projecteuler.net/project/images/p015.gif
@@ -16,11 +16,11 @@ How many such routes are there through a 20×20 grid?
 """
 
 """
-Note: this can be solved using Binomial Coefficients (nCk), aka n choose k. 
+Note: this can be solved using Binomial Coefficients (nCk), aka n choose k.
 
-For the 2x2 example we have: 
+For the 2x2 example we have:
      _ _ _ _  spots and R, R, D, D to choose from
-     
+
 however, once all the R's or all the D's are in place, the other must fill in
 the blanks, thus we have 4C2
 
