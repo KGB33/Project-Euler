@@ -8,6 +8,7 @@ authors = ["KGB33 <github@bassingthwaite.org>"]
 python = "^3.8"
 pre-commit = "^2.6.0"
 mttools = "^0.2.2"
+colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"
