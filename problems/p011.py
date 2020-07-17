@@ -1,18 +1,3 @@
-""""""
-
-from p011 import p011
-
-
-def test_p011():
-    assert p011() == 70600674
-
-
-"""
-Created on Mon Sep 17 13:39:47 2018
-
-@author: Kelton
-"""
-
 """
 Largest product in a grid
 Problem 11
@@ -46,12 +31,18 @@ What is the greatest product of four adjacent numbers in the same direction
 """
 import pathlib
 
+SOLUTION = 70600674
+
+
+def test_p011():
+    assert p011() == 70600674
+
 
 def p011():
     maxes = {}
 
     # read in text
-    data = pathlib.Path(__file__).parent.absolute() / "data.txt"
+    data = pathlib.Path(__file__).parent.absolute() / "data" / "p011.txt"
     with data.open() as file:
         text_grid = file.read()
 
@@ -63,7 +54,6 @@ def p011():
     for row in array:
         for i in range(0, len(row)):
             row[i] = int(row[i])
-    # print_array(array)
 
     # find max products
     maxes.update({"Max L->R Diagonal": find_max_lr_diagonal(array)})
@@ -74,9 +64,6 @@ def p011():
     # find the max of the maxes
     mega_max = find_max_in_dic(maxes)
 
-    # print data
-    print("\n\n\nMegaMax: {0}".format(mega_max))
-    print_dic(maxes)
     return mega_max
 
 
@@ -86,12 +73,9 @@ def find_max_horizontal(array):
         for i in range(0, len(row)):
             product = 1
             try:
-                # print(row)
                 for s in range(0, 4):
-                    # print(row[i + s])
                     product *= row[i + s]
             except IndexError:
-                # print("index error in max horizontal")
                 pass
             if product > maximum:
                 maximum = product
@@ -103,13 +87,10 @@ def find_max_vertical(array):
     for r in range(0, len(array)):
         for c in range(0, len(array)):
             product = 1
-            # print("R: {0}, C: {1}".format(r, c))
             try:
                 for s in range(0, 4):
-                    # print("\t{0}".format(array[r + s][c]))
                     product *= array[r + s][c]
             except IndexError:
-                # print("Vert. Array Error")
                 pass
             if product > maximum:
                 maximum = product
@@ -118,24 +99,13 @@ def find_max_vertical(array):
 
 def find_max_lr_diagonal(array):
     maximum = 0
-    num_index_errors = 0
     for r in range(0, len(array)):
         for c in range(0, len(array)):
             product = 1
             try:
-                # print("R: {0}, C: {1}".format(r, c))
                 for s in range(0, 4):
-                    # print("\t", array[r + s][c + s])
                     product *= array[r + s][c + s]
             except IndexError:
-                num_index_errors += 1
-                """
-                print("Index error at:"
-                      "\n\tRow: {0}"
-                      "\n\tColum: {1}"
-                      "\n\tShift: {2}"
-                      "\n\tTotal IndexErrors: {3}".format(r, c, s, num_index_errors))
-                """
                 pass
             maximum = find_max(maximum, product)
     return maximum
@@ -143,24 +113,13 @@ def find_max_lr_diagonal(array):
 
 def find_max_rl_diagonal(array):
     maximum = 0
-    num_index_errors = 0
     for r in range(0, len(array)):
         for c in range(0, len(array)):
             product = 1
             try:
-                # print("R: {0}, C: {1}".format(r, c))
                 for s in range(0, 4):
-                    # print("\t", array[r + s][c + s])
                     product *= array[r + s][c - s]
             except IndexError:
-                num_index_errors += 1
-                """
-                print("Index error at:"
-                      "\n\tRow: {0}"
-                      "\n\tColum: {1}"
-                      "\n\tShift: {2}"
-                      "\n\tTotal IndexErrors: {3}".format(r, c, s, num_index_errors))
-                """
                 pass
             maximum = find_max(maximum, product)
     return maximum
@@ -180,15 +139,12 @@ def find_max(current_max, challanger):
         return current_max
 
 
-def print_array(array):
-    for row in array:
-        print(row)
-
-
-def print_dic(dic):
-    for key in dic:
-        print("\t{0}: {1}".format(key, dic[key]))
-
-
 if __name__ == "__main__":
-    print(f"Solution: {p011()}")
+    from colorama import Fore
+
+    answer = p011()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

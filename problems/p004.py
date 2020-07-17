@@ -1,5 +1,6 @@
-"""# Largest palindrome product
-### Problem 4
+"""
+Largest palindrome product
+Problem 4
 
 A palindromic number reads the same both ways.
 The largest palindrome made from the product of two
@@ -7,21 +8,13 @@ The largest palindrome made from the product of two
 
 Find the largest palindrome made from the product
 of two 3-digit numbers.
-
-
-#### Solution: `906609`
 """
-
-from p004 import p004
 
 SOLUTION = 906609
 
 
 def test_correctness():
     assert SOLUTION == p004()
-
-
-import time
 
 
 def p004():
@@ -38,6 +31,11 @@ def p004():
 
 
 if __name__ == "__main__":
-    start_time = time.clock()
-    print(p004())
-    print(time.clock() - start_time)
+    from colorama import Fore
+
+    answer = p004()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

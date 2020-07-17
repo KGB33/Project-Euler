@@ -1,13 +1,3 @@
-""""""
-
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  2 00:08:02 2018
-
-@author: kelto
-"""
-
 """
 Highly divisible triangular number
 Problem 12
@@ -30,26 +20,16 @@ We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
 """
-
-"""
-Answer: 76576500
-(25.5 secs)
-"""
-
-
-import time
+SOLUTION = 76576500
 
 
 def main():
-    condition = False
     n = 4
     tri_num = 6
-    while condition == False:
+    while True:
         factors = FindFactors(tri_num)
-        # print(factors)
         if len(factors) > 500:
-            print(tri_num)
-            condition = True
+            return tri_num
         tri_num = tri_num + n
         n = n + 1
 
@@ -61,10 +41,19 @@ def FindFactors(number):
         if number % i == 0:
             factors = factors + [i, int(number / i)]
         i = i + 1
-    factors.sort()
     return factors
 
 
-start_time = time.clock()
-main()
-print("Time: ", time.clock() - start_time)
+def test_p012():
+    assert main() == SOLUTION
+
+
+if __name__ == "__main__":
+    from colorama import Fore
+
+    answer = main()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

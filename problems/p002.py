@@ -35,4 +35,10 @@ def count_fibonacci():
 
 
 if __name__ == "__main__":
-    print(f"Solution for p002()={count_fibonacci()}")
+    from colorama import Fore
+
+    if count_fibonacci() == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution for p002()={count_fibonacci()}")

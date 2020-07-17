@@ -30,6 +30,16 @@ def array_way():
     return sum([x for x in range(1000) if x % 3 == 0 or x % 5 == 0])
 
 
+def main():
+    return array_way()
+
+
 if __name__ == "__main__":
-    assert array_way() == find_multiples()
-    print(f"Solution to p001={array_way()}")
+    from colorama import Fore
+
+    answer = main()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

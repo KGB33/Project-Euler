@@ -1,12 +1,3 @@
-""""""
-
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  2 00:28:55 2018
-
-@author: kelto
-"""
 """
 Lattice paths
 Problem 15
@@ -30,10 +21,8 @@ the blanks, thus we have 4C2
 nCk =  ___(n!)___
        k!(n - k!)
 """
+SOLUTION = 137846528820
 
-"""
-Answer: 137846528820
-"""
 from scipy.special import comb
 import time
 
@@ -42,10 +31,19 @@ def main():
     size = 20
     n = size * 2
     k = size
-    print(comb(n, k, exact=True))
+    return comb(n, k, exact=True)
 
 
-print("Running, do not shut off Computer...")
-start_time = time.clock()
-main()
-print("Time: ", time.clock() - start_time)
+def test_p015():
+    assert main() == SOLUTION
+
+
+if __name__ == "__main__":
+    from colorama import Fore
+
+    answer = main()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

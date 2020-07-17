@@ -23,4 +23,10 @@ def p003():
 
 
 if __name__ == "__main__":
-    print(f"Solution for {p003()=}")
+    from colorama import Fore
+
+    if p003() == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution for {p003()=}")

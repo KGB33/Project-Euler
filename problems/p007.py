@@ -1,18 +1,13 @@
-"""# 10001st prime
-### Problem 7
+"""
+10001st prime
+Problem 7
 
 By listing the first six prime numbers:
 `2, 3, 5, 7, 11, and 13`, we can see that the 6th prime is 13.
 
 What is the 10001st prime number?
 
-
-#### Solution: `104743`
 """
-
-from p007 import p007
-
-
 SOLUTION = 104743
 
 
@@ -20,9 +15,7 @@ def test_correctness():
     assert SOLUTION == p007()
 
 
-import time
 from math import log
-
 from mttools.number_theory_tools.Primes import sieve_of_eratosthenes
 
 
@@ -38,6 +31,11 @@ def p007():
 
 
 if __name__ == "__main__":
-    start_time = time.perf_counter()
-    print(p007())
-    print(time.perf_counter() - start_time)
+    from colorama import Fore
+
+    answer = p007()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

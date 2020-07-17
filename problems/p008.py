@@ -1,5 +1,6 @@
-"""# Largest product in a series
-### Problem 8
+"""
+Largest product in a series
+Problem 8
 
 The four adjacent digits in the 1000-digit number that have the
 greatest product are `9 × 9 × 8 × 9 = 5832`.
@@ -29,8 +30,6 @@ Find the thirteen adjacent digits in the 1000-digit number that
 have the greatest product. What is the value of this product?
 """
 
-from p008 import p008
-
 SOLUTION = 23514624000
 
 
@@ -38,7 +37,6 @@ def test_correctness():
     assert SOLUTION == p008()
 
 
-import time
 from functools import reduce
 
 
@@ -72,13 +70,17 @@ def p008():
         if 0 in arr:
             continue
         number = reduce((lambda x, y: x * y), arr)
-        print(arr, number)
         if number > winner:
             winner = number
     return winner
 
 
 if __name__ == "__main__":
-    start_time = time.perf_counter()
-    print(p008())
-    print("Time: ", time.perf_counter() - start_time)
+    from colorama import Fore
+
+    answer = p008()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")

@@ -1,13 +1,3 @@
-""""""
-
-
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Aug  3 01:23:30 2018
-
-@author: kelto
-"""
-
 """
 Longest Collatz sequence
 Problem 14
@@ -26,12 +16,8 @@ It can be seen that this sequence (starting at 13 and finishing at 1) contains 1
 Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
-
 """
-
-"""
-done, Answer = 837799
-"""
+SOLUTION = 837799
 
 import math
 
@@ -50,7 +36,7 @@ def main():
                 length = length + 1
         if length > maxLength:
             maxLength = length
-            print("Length: ", length, "\tStart: ", start)
+    return maxLength
 
 
 def doEven(number):
@@ -61,4 +47,16 @@ def doOdd(number):
     return 3 * number + 1
 
 
-main()
+def test_p014():
+    assert SOLUTION == main()
+
+
+if __name__ == "__main__":
+    from colorama import Fore
+
+    answer = main()
+    if answer == SOLUTION:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    print(color + f"Solution to {__file__[-7:-3]}={answer}")
