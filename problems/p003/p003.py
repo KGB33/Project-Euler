@@ -1,4 +1,4 @@
-from PrimeTools import prime_factors
+from mttools.number_theory_tools.Primes import prime_factors
 
 
 def p003():

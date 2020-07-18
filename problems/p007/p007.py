@@ -1,14 +1,14 @@
 import time
-from PrimeTools import sieve_of_eratosthenes
 from math import log
+
+from mttools.number_theory_tools.Primes import sieve_of_eratosthenes
 
 
 def p007():
     guess_num = 10001
     while True:
         p_guess = int(guess_num * log(guess_num, 10))
-        p = sieve_of_eratosthenes(p_guess)
-        primes = [x for x in p if p[x]]
+        primes = sieve_of_eratosthenes(p_guess)
         if len(primes) > 10000:
             return primes[10000]
         else:

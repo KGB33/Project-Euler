@@ -44,25 +44,25 @@ p030()
 """
         There is a point where the DFP of a number MUST be less than the number,
         for example:
-        
+
             DFP(999...999) < 999...999
-            
+
         We can determine how many digits's are necessary by trial and error:
-        
+
             Start with a 10 digit number where every digit is a 9.
-                
+
                 10 * 9 ^ 5 = 590,490 < 9,999,999,999
-            
+
             5 digit:
-                
+
                 5 * 9 ^ 5 = 295,245 > 99,999
-                
+
             7 digit:
-            
+
                 7 * 9 ^ 5 = 413,343 < 9,999,999
-                
+
             6 digit: 6 * 9 ^ 5 = 354,294 < 999,999
-            
+
         Therefore, our largest number is between 5 - 6 digits,
         hence the upper-bound is 1,000,000
 """

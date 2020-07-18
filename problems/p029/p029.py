@@ -37,7 +37,7 @@ p029()
 Notes:
 
     Use Brute Force:
-        > Add all possible combinations to the list. 
+        > Add all possible combinations to the list.
         > Use numpy.unique to return all unique elements
         > print length of unique list
 """
