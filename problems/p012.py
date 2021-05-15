@@ -36,10 +36,11 @@ def main():
 
 def FindFactors(number):
     i = 1
-    factors = []
+    factors = set()
     while i not in factors:
         if number % i == 0:
-            factors = factors + [i, int(number / i)]
+            factors.add(i)
+            factors.add(int(number / i))
         i = i + 1
     return factors
 
