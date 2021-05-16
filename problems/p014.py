@@ -19,25 +19,38 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 """
 import math
 import time
+import operator
 
 SOLUTION = 837799
 
 
-def main():
-    maxLength = 0
-    for start in range(5, 999999):
-        number = start
-        length = 0
-        while math.log(number, 2) != 0:
-            if number % 2 == 0:  # even
-                number = doEven(number)
-                length = length + 1
-            else:  # odd
-                number = doOdd(number)
-                length = length + 1
-        if length > maxLength:
-            maxLength = length
-    return maxLength
+class CollatzChain:
+    def __init__(self):
+        self.chains = {pow(2, n): n - 1 for n in range(0, 20)}
+
+    def add_to_chains(self, num: int):
+        terms = [
+            num,
+        ]
+        while terms[-1] not in self.chains:
+            if terms[-1] % 2 == 0:
+                terms.append(doEven(terms[-1]))
+            else:
+                terms.append(doOdd(terms[-1]))
+        chain_length = self.chains[terms[-1]]
+        for i, val in enumerate(reversed(terms)):
+            self.chains.update({val: i + chain_length})
+
+    @property
+    def largest_chain(self) -> int:
+        return max(self.chains.items(), key=operator.itemgetter(1))[0]
+
+
+def main() -> int:
+    cc = CollatzChain()
+    for num in range(5, 999999):
+        cc.add_to_chains(num)
+    return cc.largest_chain
 
 
 def doEven(number):

@@ -7,7 +7,7 @@ Work out the first ten digits of the sum of the following one-hundred 50-digit n
 import time
 from pathlib import Path
 
-SOLUTION = -1
+SOLUTION = 5537376230
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
     with open(data) as f:
         for line in f:
             total += int(line[:11])
-    return str(total)[:10]
+    return int(str(total)[:10])
 
 
 def test_solution() -> (bool, int):
