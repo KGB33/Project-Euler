@@ -12,7 +12,7 @@ SOLUTION = -1
 
 def main():
     total = 0
-    data = Path(__file__).parent.absolute() / "data" / "p013_data.txt"
+    data = Path(__file__).parent.absolute() / "data" / "p013.txt"
     with open(data) as f:
         for line in f:
             total += int(line[:11])
