@@ -1,9 +1,7 @@
-""""""
-
-
-# Coin sums
-# Problem 31
 """
+Coin sums
+Problem 31
+
 In England the currency is made up of
     pound, £, and
     pence, p,
@@ -18,11 +16,12 @@ It is possible to make £2 in the following way:
 
 How many different ways can £2 be made using any number of coins?
 """
-from PrimeTools import timer
+import time
+
+SOLUTION = 73682
 
 
-@timer(unit="s")
-def p031():
+def main():
     total = 0
     for a in range(0, 200 + 1):
         for b in range(0, coin_range(2, a)):
@@ -40,7 +39,7 @@ def p031():
                                         break
                                     else:
                                         continue
-    print("\nSolution: {}".format(total))
+    return total
 
 
 def sum_pence(*coins):
@@ -55,8 +54,11 @@ def coin_range(value, *previous_coins):
     return ((200 - sum_pence(previous_coins)) // value) + 1
 
 
-# print(sum_pence(1, 2))
-p031()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
 # Notes

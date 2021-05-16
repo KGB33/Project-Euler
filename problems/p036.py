@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Double-base palindromes
     Problem 36
@@ -16,29 +13,25 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 
 (Please note that the palindromic number, in either base, may not include leading zeros.)
 """
-from PrimeTools import timer
+import time
+
+SOLUTION = 872187
 
 
-@timer()
-def p036():
+def main():
     total = 0
     for i in range(0, 1_000_000):
         base_10 = str(i)
         base_10_reverse = get_reversed_string(base_10)
         if base_10 == base_10_reverse:
             base_2 = str(bin(i))[2:]
-            base_2_reverse = get_reversed_string(base_2)
-            if base_2 == base_2_reverse:
+            if base_2 == base_2[::-1]:
                 total += i
-    print(total)
+    return total
 
 
-def get_reversed_string(s):
-    output = ""
-    for x in reversed(s):
-        output += x
-    return output
-
-
-if __name__ == "__main__":
-    p036()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

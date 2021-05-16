@@ -1,13 +1,17 @@
-""""""
-
-
 """
-Circular primes project from project Euler
-https://projecteuler.net/problem=35
+Circular primes
+Problem 35
 
-SOLVED!
+The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
+
+There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
+
+How many circular primes are there below one million?
 """
 import random
+import time
+
+SOLUTION = 55
 
 
 def main():
@@ -35,14 +39,13 @@ def main():
                 isCirPrime = isPrime(test)  # can use isPrime or primeFactor
                 if isCirPrime == False:
                     break
-                print(test, "   ", isCirPrime)
 
         # ADD ALL rotations to the tuple at the top
         if isCirPrime and not hasEvens:
             for i in range(0, len(numString)):
                 if (int(numString[i:] + numString[:i])) not in cirPrimes:
                     cirPrimes = cirPrimes + (int(numString[i:] + numString[:i]),)
-    print(sorted(cirPrimes), len(cirPrimes))
+    return len(cirPrimes)
 
 
 def isPrime(number):
@@ -107,4 +110,8 @@ def prime_factor(number):
         return False
 
 
-main()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

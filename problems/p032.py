@@ -1,9 +1,7 @@
-""""""
-
-
-# Pandigital products
-# Problem 32
 """
+Pandigital products
+Problem 32
+
     We shall say that an n-digit number is pandigital
 if it makes use of all the digits 1 to n exactly once;
 for example, the 5-digit number, 15234, is 1 through 5 pandigital.
@@ -21,11 +19,12 @@ identity can be written as a 1 through 9 pandigital.
     HINT: Some products can be obtained in more than one way
 so be sure to only include it once in your sum.
 """
-from PrimeTools import timer
+import time
 from itertools import permutations
 
+SOLUTION = 100
 
-@timer(message="By Multiplication")
+
 def p032_by_multiplication():
     TBD = 10000
     products = []
@@ -37,12 +36,10 @@ def p032_by_multiplication():
             if (a * b) in products:
                 continue
             if is_pandigital(num):
-                print("{} * {} = {}".format(a, b, a * b))
                 products.append(a * b)
-    print("\n\nSolution: {}".format(sum(products)))
+    return sum(products)
 
 
-@timer(message="By Permutation")
 def p032_by_permutations():
     digits = [str(x) for x in range(1, 10)]  # digits 1 - 9
     products = []
@@ -56,14 +53,12 @@ def p032_by_permutations():
             b = int(f[1] + f[2] + f[3] + f[4])
             if a * b == c:
                 products.append(c)
-                print(c)
                 continue
         a = int(f[0] + f[1])
         b = int(f[2] + f[3] + f[4])
         if a * b == c:
             products.append(c)
-            print(c)
-    print("\n\nSolution: {}".format(sum(products)))
+    return sum(products)
 
 
 def is_pandigital(num):
@@ -80,5 +75,13 @@ def is_pandigital(num):
     return True
 
 
-p032_by_multiplication()
-p032_by_permutations()
+def main():
+    # return p032_by_multiplication()
+    return p032_by_permutations()
+
+
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

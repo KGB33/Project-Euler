@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Digit cancelling fractions
 Problem 33
@@ -24,12 +21,13 @@ There are exactly four non-trivial examples of this type of fraction,
 If the product of these four fractions is given in
     its lowest common terms, find the value of the denominator.
 """
-from PrimeTools import timer
+import time
 from itertools import product
 
+SOLUTION = 100
 
-@timer()
-def p033():
+
+def main():
     solutions = ()
 
     # Generate Numerators and Denominators
@@ -59,6 +57,7 @@ def p033():
     p_n = 1
     p_d = 1
     for i, sol in enumerate(solutions):
+        """
         print(
             "Solution {}:\n\t{}/{} = {}\n\t{}/{} = {}".format(
                 i + 1,
@@ -70,12 +69,13 @@ def p033():
                 sol["r_n"] / sol["r_d"],
             )
         )
+        """
         p_n *= sol["n"]
         p_d *= sol["d"]
 
         p_n, p_d = simplify_fraction(p_n, p_d)
 
-    print("Grand Solution: {}/{}".format(p_n, p_d))
+    return p_d
 
 
 def simplify_fraction(numerator, denomonator):
@@ -133,4 +133,8 @@ def build_num_from_prime_factors(factors):
     return num
 
 
-p033()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Truncatable primes
 Problem 37
@@ -14,21 +11,25 @@ Similarly we can work from right to left: 3797, 379, 37, and 3.
 Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
 
 NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
-"""
 
-"""
+
 Limits:
     Cannot Have Even Digits
     Must Start and End with a Prime Digit (Cannot end with a 2)
 """
-from PrimeTools import timer, division_test, sieve_of_eratosthenes
+from mttools.number_theory_tools.Primes import (
+    division_primality_test,
+    sieve_of_eratosthenes,
+)
+import time
+
+SOLUTION = 748317
 
 
-@timer()
-def p037():
+def main():
     solutions = []
     p = 7
-    primes = [str(x) for x in range(2, 10) if division_test(x)]
+    primes = [str(x) for x in range(2, 10) if division_primality_test(x)]
     while len(solutions) < 11:
         p += 2
         if str(p)[0] in primes and str(p)[-1] in primes:
@@ -37,13 +38,12 @@ def p037():
                     solutions += [p]
                     print(p)
 
-    print(solutions)
-    print(sum(solutions))
+    return sum(solutions)
 
 
 def is_right_truncatable(num):
     for i, digit in enumerate(num):
-        if division_test(int(num[: i + 1])):
+        if division_primality_test(int(num[: i + 1])):
             continue
         else:
             return False
@@ -52,12 +52,15 @@ def is_right_truncatable(num):
 
 def is_left_truncatable(num):
     for i, digit in enumerate(num):
-        if division_test(int(num[i:])):
+        if division_primality_test(int(num[i:])):
             continue
         else:
             return False
     return True
 
 
-if __name__ == "__main__":
-    p037()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
