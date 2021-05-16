@@ -16,7 +16,7 @@ def main():
         canidate = concat(canidate)
         for i in [1, 2, 3]:  # If n needs the 5th index n * 2 will take up 10 digits
             n = int(canidate[:i])
-            poss =  concat([a * n for a in range(1, i + 1)])
+            poss = concat([a * n for a in range(1, i + 1)])
             if poss == canidate:
                 successes.append(canidate)
     return successes
