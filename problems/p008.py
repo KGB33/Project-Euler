@@ -29,18 +29,22 @@ greatest product are `9 × 9 × 8 × 9 = 5832`.
 Find the thirteen adjacent digits in the 1000-digit number that
 have the greatest product. What is the value of this product?
 """
+import time
 
 SOLUTION = 23514624000
 
 
-def test_correctness():
-    assert SOLUTION == p008()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
 from functools import reduce
 
 
-def p008():
+def main():
     winner = 0
     in_str = """
         73167176531330624919225119674426574742355349194934
@@ -73,14 +77,3 @@ def p008():
         if number > winner:
             winner = number
     return winner
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p008()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

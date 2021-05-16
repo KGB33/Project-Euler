@@ -13,14 +13,19 @@ There exists exactly one Pythagorean triplet for which
 Find the product `abc`.
 
 """
+import time
+
 SOLUTION = 31875000
 
 
-def test_correctness():
-    assert SOLUTION == p009()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p009():
+def main():
     a = 1
     b = 1
     while True:
@@ -33,14 +38,3 @@ def p009():
                 b += 1
             else:
                 a += 1
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p009()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

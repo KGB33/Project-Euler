@@ -1,9 +1,3 @@
-""""""
-
-
-from PrimeTools import timer
-import inflect  # is using this cheating, maybe, maybe not, who knows
-
 """
 Number letter counts
 Problem 17
@@ -23,10 +17,13 @@ For example:
 
 The use of "and" when writing out numbers is in compliance with British usage.
 """
+import time
+import inflect  # is using this cheating, maybe, maybe not, who knows
+
+SOLUTION = 21124
 
 
-@timer()
-def p17():
+def main():
     total_letters = 0
     ie = inflect.engine()
     for _ in range(1, 1000 + 1):
@@ -39,7 +36,11 @@ def p17():
             else:
                 total_letters += 1
 
-    print(total_letters)
+    return total_letters
 
 
-p17()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

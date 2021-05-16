@@ -17,9 +17,10 @@ Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
 """
-SOLUTION = 837799
-
 import math
+import time
+
+SOLUTION = 837799
 
 
 def main():
@@ -47,16 +48,8 @@ def doOdd(number):
     return 3 * number + 1
 
 
-def test_p014():
-    assert SOLUTION == main()
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = main()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

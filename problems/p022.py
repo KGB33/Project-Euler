@@ -1,8 +1,3 @@
-""""""
-
-
-from PrimeTools import timer
-
 """
 Names scores
 Problem 22
@@ -19,17 +14,19 @@ So, COLIN would obtain a score of 938 × 53 = 49714.
 
 What is the total of all the name scores in the file?
 """
+import time
+
+SOLUTION = 871198282
 
 
-@timer()
-def p22():
+def main():
     total = 0
-    with open("data/p022 - data.txt") as names:
+    with open("data/p022.txt") as names:
         data = names.read().split(",")
         data.sort()
     for i in range(0, len(data)):
         total += get_alphabetical_value(data[i]) * (i + 1)
-    print("Total: {}".format(total))
+    return total
 
 
 def get_alphabetical_value(string):
@@ -68,4 +65,8 @@ def get_alphabetical_value(string):
     return total
 
 
-p22()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

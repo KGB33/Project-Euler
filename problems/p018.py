@@ -1,8 +1,3 @@
-""""""
-
-
-from PrimeTools import timer
-
 """
 Maximum path sum I
 Problem 18
@@ -25,11 +20,13 @@ trying every route. However, Problem 67, is the same challenge with a
 triangle containing one-hundred rows; it cannot be solved by brute force,
  and requires a clever method! ;o)
 """
+import time
+
+SOLUTION = 1074
 
 
-@timer()
-def p18():
-    print(find_max(make_array()))
+def main():
+    return find_max(make_array())
 
 
 def make_array():
@@ -60,4 +57,8 @@ def find_max(arrayIn):
     return array[r]
 
 
-p18()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

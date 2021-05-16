@@ -29,16 +29,20 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction
 (up, down, left, right, or diagonally) in the 20×20 grid?
 """
+import time
 import pathlib
 
 SOLUTION = 70600674
 
 
-def test_p011():
-    assert p011() == 70600674
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p011():
+def main():
     maxes = {}
 
     # read in text
@@ -132,19 +136,8 @@ def find_max_in_dic(dic):
     return maximum
 
 
-def find_max(current_max, challanger):
-    if challanger > current_max:
-        return challanger
+def find_max(current_max, challenger):
+    if challenger > current_max:
+        return challenger
     else:
         return current_max
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p011()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

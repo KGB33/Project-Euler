@@ -13,15 +13,19 @@ whose values do not exceed four million, find the sum
 of the even-valued terms.
 
 """
+import time
 
 SOLUTION = 4613732
 
 
-def test_correctness():
-    assert count_fibonacci() == SOLUTION
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def count_fibonacci():
+def main():
     e = 1
     p = 1
     sum_even = 0
@@ -32,13 +36,3 @@ def count_fibonacci():
         if e % 2 == 0:
             sum_even += e
     return sum_even
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    if count_fibonacci() == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution for p002()={count_fibonacci()}")

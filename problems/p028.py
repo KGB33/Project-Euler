@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Number spiral diagonals
 Problem 28
@@ -17,31 +14,8 @@ It can be verified that the sum of the numbers on the diagonals is 101.
 
 What is the sum of the numbers on the
     diagonals in a 1001 by 1001 spiral formed in the same way?
-"""
-from PrimeTools import timer
 
-
-@timer()
-def p028():
-    total = 1
-    lap = 1
-    current_num = 1
-    while True:
-        # See Notes:
-        for _ in range(0, 4):  # 4 times
-            current_num += lap * 2
-            total += current_num
-        lap += 1
-        if current_num >= 1001 * 1001:
-            break
-    print("Solution: {}".format(total))
-    # print('Current Num: ', current_num) # verify it stops at the correct number
-
-
-p028()
-
-"""
-Notes:
+=== Notes ===
 
     When the spiral is uncurled it looks as shown:
 
@@ -80,3 +54,28 @@ Notes:
             Because the square of any odd number minus 1 is dividable by 4,
                 any square spiral must end on the the odd number's square,
 """
+import time
+
+SOLUTION = 669171001
+
+
+def main():
+    total = 1
+    lap = 1
+    current_num = 1
+    while True:
+        # See Notes:
+        for _ in range(0, 4):  # 4 times
+            current_num += lap * 2
+            total += current_num
+        lap += 1
+        if current_num >= 1001 * 1001:
+            break
+    return total
+
+
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

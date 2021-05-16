@@ -8,25 +8,19 @@ What is the largest
 prime factor of the number `600851475143`?
 
 """
+import time
 from mttools.number_theory_tools.Primes import prime_factors
 
 SOLUTION = 6857
 
 
-def test_correctness():
-    assert p003() == SOLUTION
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p003():
+def main():
     number = 600851475143
     return max(prime_factors(number).keys())
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    if p003() == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution for {p003()=}")

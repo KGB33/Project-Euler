@@ -13,7 +13,7 @@ import time
 SOLUTION = 233168
 
 
-def test_solution():
+def test_solution() -> (bool, int):
     start_time = time.time()
     pass_ = main() == SOLUTION
     time_delta = time.time() - start_time

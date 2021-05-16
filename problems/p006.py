@@ -17,14 +17,19 @@ Find the difference between the sum of the
 squares of the first one hundred natural numbers and
 the square of the sum.
 """
+import time
+
 SOLUTION = 25164150
 
 
-def test_correctness():
-    assert SOLUTION == p006()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p006():
+def main():
     s = 0
     p = 0
     for i in range(101):
@@ -33,14 +38,3 @@ def p006():
     s = s * s
     ssd = s - p
     return ssd
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p006()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

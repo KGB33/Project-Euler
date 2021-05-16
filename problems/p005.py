@@ -8,29 +8,22 @@ of the numbers from 1 to 10 without any remainder.
 What is the smallest positive number that
 is evenly divisible by all of the numbers from 1 to 20?
 """
+import time
 from mttools.number_theory_tools import lcm, gcd
 
 SOLUTION = 232792560
 
 
-def test_correctness():
-    assert SOLUTION == p005()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p005():
+def main():
     numbers = [12, 13, 14, 15, 16, 17, 18, 19, 20]
     winner = 11
     for element in numbers:
         winner = lcm(winner, element)
     return winner
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p005()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {p005()=}")

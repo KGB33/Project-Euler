@@ -9,15 +9,19 @@ The largest palindrome made from the product of two
 Find the largest palindrome made from the product
 of two 3-digit numbers.
 """
+import time
 
 SOLUTION = 906609
 
 
-def test_correctness():
-    assert SOLUTION == p004()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
-def p004():
+def main():
     winner = 0
     for n in range(999, 100, -1):
         for m in range(999, 100, -1):
@@ -28,14 +32,3 @@ def p004():
                     break
 
     return winner
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p004()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

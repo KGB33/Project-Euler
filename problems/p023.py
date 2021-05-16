@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Non-abundant sums
 Problem 23
@@ -20,29 +17,26 @@ that cannot be expressed as the sum of two abundant numbers is less than this li
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 """
-from PrimeTools import timer, perfect_factors
+import time
+from mttools.number_theory_tools import perfect_factors
+
+SOLUTION = 4179871
 
 
 class p023(object):
     """
-    ~ 200ms to initalize abundants and abundants_set
+    ~ 200ms to initialize abundant numbers
     ~ 450ms to run program
     ~ 650ms total
     """
 
-    @timer(message="Init Time")
     def __init__(self):
         self.abundants = [x for x in range(1, 28123 + 1) if p023.is_abundant(x)]
         self.abundants_set = set(self.abundants)
         # print(self.abundants)
 
-    @timer(message="Call Time")
     def __call__(self):
-        print(
-            "\n\nSolution: {}".format(
-                sum(x for x in range(1, 28123 + 1) if not self.is_abundant_sum(x))
-            )
-        )
+        return sum(x for x in range(1, 28123 + 1) if not self.is_abundant_sum(x))
 
     def is_abundant_sum(self, number):
         for i in self.abundants:
@@ -60,10 +54,13 @@ class p023(object):
             return sum(perfect_factors(number)) > number
 
 
-@timer(message="Total Time")
 def main():
     p = p023()
-    p()
+    return p()
 
 
-main()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

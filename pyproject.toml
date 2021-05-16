@@ -5,10 +5,12 @@ description = ""
 authors = ["KGB33 <github@bassingthwaite.org>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 pre-commit = "^2.6.0"
 mttools = "^0.2.2"
 colorama = "^0.4.3"
+numpy = "^1.20.3"
+inflect = "^5.3.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"

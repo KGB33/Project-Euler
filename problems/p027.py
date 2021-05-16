@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Quadratic primes
 Problem 27
@@ -37,11 +34,12 @@ Find the product of the coefficients, a and b,
     for the quadratic expression that produces the maximum number of
     primes for consecutive values of n, starting with n=0.
 """
-from PrimeTools import timer, division_test
+import time
+
+SOLUTION = -59231
 
 
-@timer(unit="s")
-def p027():
+def main():
     maximum = 0
     # Check all possible b's
     for b in [x for x in range(0, 1001) if division_test(x)]:
@@ -58,12 +56,7 @@ def p027():
                 max_a = a
                 max_b = b
 
-    # Print solutions
-    print(
-        "A: {} B: {}"
-        "\n\tSolution: {}"
-        "\n\tLength: {}".format(max_a, max_b, max_a * max_b, maximum)
-    )
+    return max_a * max_b
 
 
 def get_length(a, b):
@@ -75,4 +68,26 @@ def get_length(a, b):
             return n
 
 
-p027()
+def division_test(p: int) -> bool:
+    """
+    Standard division test for primality
+    params:
+        p: Number that is being tested for primality
+    """
+    # negatives, 0, 1 are not prime
+    if p < 2:
+        return False
+
+    # Checks divisors from 3 to p/2
+    for divisor in range(2, int(p / 2) + 1):
+        if p % divisor == 0:
+            return False
+
+    return True
+
+
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

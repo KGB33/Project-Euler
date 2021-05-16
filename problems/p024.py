@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Lexicographic permutations
 Problem 24
@@ -21,25 +18,22 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 
 ---------------------------
 aka, what is the 1,000,000th number that has the all the digits 0-9
 """
-from PrimeTools import timer
+import time
 from itertools import permutations
 
+SOLUTION = 2783915460
 
-@timer()
-def p024():
+
+def main():
     counter = 0
     for p in permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]):
         if counter == 999999:  # 1,000,000th element
-            print("Solution: {}".format(list_to_string(p)))
-            break
+            return int("".join(str(digit) for digit in p))
         counter += 1
 
 
-def list_to_string(l):
-    result = ""
-    for element in l:
-        result += str(element)
-    return result
-
-
-p024()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

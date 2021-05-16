@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Counting Sundays
 Problem 19
@@ -20,13 +17,13 @@ a century unless it is divisible by 400.
 How many Sundays fell on the first of the month during
 the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 """
-
 import calendar
-from PrimeTools import timer
+import time
+
+SOLUTION = 171
 
 
-@timer()
-def p19():
+def main():
     num_sundays = 0
     for year in range(1901, 2001):  # note: range goes from start to end - 1
         for month in range(1, 13):
@@ -34,7 +31,11 @@ def p19():
             if c[0][6] == 1:
                 num_sundays = num_sundays + 1
 
-    print("Number of Sundays: ", num_sundays)
+    return num_sundays
 
 
-p19()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

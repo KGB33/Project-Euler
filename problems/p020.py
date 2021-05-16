@@ -1,9 +1,3 @@
-""""""
-
-
-from math import factorial
-from PrimeTools import timer
-
 """
 Factorial digit sum
 Problem 20
@@ -14,16 +8,23 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 
 Find the sum of the digits in the number 100!
 """
+import time
+from math import factorial
+
+SOLUTION = 648
 
 
-@timer()
-def p20():
+def main():
     n = 100
     x = str(factorial(n))
     total = 0
     for digit in x:
         total += int(digit)
-    print("Sum of {} is: {}".format(n, total))
+    return total
 
 
-p20()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

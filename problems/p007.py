@@ -8,18 +8,21 @@ By listing the first six prime numbers:
 What is the 10001st prime number?
 
 """
-SOLUTION = 104743
-
-
-def test_correctness():
-    assert SOLUTION == p007()
-
-
+import time
 from math import log
 from mttools.number_theory_tools.Primes import sieve_of_eratosthenes
 
+SOLUTION = 104743
 
-def p007():
+
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
+
+
+def main():
     guess_num = 10001
     while True:
         p_guess = int(guess_num * log(guess_num, 10))
@@ -28,14 +31,3 @@ def p007():
             return primes[10000]
         else:
             guess_num *= 1.5
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = p007()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")

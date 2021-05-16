@@ -1,8 +1,3 @@
-""""""
-
-
-from PrimeTools import timer
-
 """
 Amicable numbers
 Problem 21
@@ -17,10 +12,12 @@ therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and 142; so d
 
 Evaluate the sum of all the amicable numbers under 10000.
 """
+import time
+
+SOLUTION = 31626
 
 
-@timer(unit="s")
-def p21():
+def main():
     total = 0
     upper_bound = 10000
     for n in range(0, upper_bound):
@@ -32,19 +29,19 @@ def p21():
             total += n
         else:
             pass
-    print("Sum(Amicable Numbers < {}): {}".format(upper_bound, total))
+    return total
 
 
 def sum_of_proper_divisors(number):
     total = 1
     for i in range(2, number):
         if number % i == 0:
-            # print("Num: {}, i: {}".format(number, i))
             total += i
-            # print('\tTotal: {}'.format(total))
     return total
 
 
-p21()
-
-# print(sum_of_proper_divisors(220))
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

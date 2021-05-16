@@ -1,9 +1,6 @@
-""""""
-
-
-# Digit fifth powers
-#     Problem 30
 """
+ Digit fifth powers
+     Problem 30
     Surprisingly there are only three numbers that can be
 written as the sum of fourth powers of their digits:
 
@@ -18,11 +15,12 @@ The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 """
-from PrimeTools import timer
+import time
+
+SOLUTION = 443839
 
 
-@timer(unit="s")
-def p030():
+def main():
     numbers_found = []
     for number in range(2, 1000000):
         s_num = str(number)
@@ -31,20 +29,19 @@ def p030():
             total += pow(int(digit), 5)
         if total == number:
             numbers_found.append(number)
-    print("Solution: {}" "\n\tNumbers: {}".format(sum(numbers_found), numbers_found))
+    return sum(numbers_found)
 
 
-p030()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
-# Notes:
 
-# Definitions:
 """
-        DFP = Digit 5th Powers
-"""
+(DFP = Digit 5th Powers)
 
-# Establishing an upper-bound:
-"""
         There is a point where the DFP of a number MUST be less than the number,
         for example:
 

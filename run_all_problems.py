@@ -45,6 +45,8 @@ def test_problem(module):
             )
     except Exception as e:
         print(f"{Fore.RED}{module} -- {e}{Style.RESET_ALL}")
+    finally:
+        print(Style.RESET_ALL, end="")
 
 
 def get_test_func(module) -> Callable:
