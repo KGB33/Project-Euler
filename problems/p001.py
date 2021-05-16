@@ -8,12 +8,16 @@ The sum of these multiples is `23`.
 
 Find the sum of all the multiples of `3` or `5` below `1000`.
 """
+import time
+
 SOLUTION = 233168
 
 
-def test_correctness():
-    assert find_multiples() == SOLUTION
-    assert array_way() == SOLUTION
+def test_solution():
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
 
 
 def find_multiples():
@@ -31,15 +35,5 @@ def array_way():
 
 
 def main():
-    return array_way()
-
-
-if __name__ == "__main__":
-    from colorama import Fore
-
-    answer = main()
-    if answer == SOLUTION:
-        color = Fore.GREEN
-    else:
-        color = Fore.RED
-    print(color + f"Solution to {__file__[-7:-3]}={answer}")
+    return find_multiples()
+    # return array_way()
