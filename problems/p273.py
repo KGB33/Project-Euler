@@ -1,6 +1,3 @@
-""""""
-
-
 """
 Project Euler #273
 https://projecteuler.net/problem=273
@@ -22,8 +19,10 @@ definitions:
 
 
 """
-# import itertools
 import math
+import time
+
+SOLUTION = -1
 
 
 def main():
@@ -38,7 +37,7 @@ def main():
                 break
             if prime_factor_4k_1(n):
                 sN = sN + (a,)
-    print(sN)
+    return sN
 
 
 def prime_factor_4k_1(number):
@@ -58,4 +57,8 @@ def prime_factor_4k_1(number):
     return True
 
 
-main()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta

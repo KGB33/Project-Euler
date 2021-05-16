@@ -1,8 +1,3 @@
-""""""
-
-
-from PrimeTools import timer
-
 """
 Maximum path sum II
 Problem 67
@@ -25,11 +20,13 @@ as there are 2^99 altogether! If you could check one trillion (10^12) routes
 every second it would take over twenty billion years to check them all.
 There is an efficient algorithm to solve it. ;o)
 """
+import time
+
+SOLUTION = 7273
 
 
-@timer()
-def p18():
-    print(find_max(make_array()))
+def main():
+    return find_max(make_array())
 
 
 def make_array():
@@ -60,4 +57,8 @@ def find_max(arrayIn):
     return array[r]
 
 
-p18()
+def test_solution() -> (bool, int):
+    start_time = time.time()
+    pass_ = main() == SOLUTION
+    time_delta = time.time() - start_time
+    return pass_, time_delta
